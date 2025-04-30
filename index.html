@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://furious-afish.art/bilets.php?a=lilu -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
+  <title>KARABAS</title>
+  <link rel="stylesheet" href="style2.css">
+  <style>
+	input[type=date]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		display: none;
+	}
+	
+	input[type=time]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		display: none;
+	}
+  </style>
+<style>.noscroll{margin-right: 23px;}</style></head>
+
+<body>
+  <div class="wrapper-def">
+    <header class="top-menu">
+      <div class="container-def">
+        <div class="top-menu__wrap">
+          <div class="top-menu__content">
+            <div class="top-menu__left">
+              <div class="top-menu__logo logo-def">KARABAS</div>
+              <div class="top-menu__title">ГЕНЕРАТОР ССЫЛКИ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="sec-generator">
+      <div class="container-def">
+        <div class="sec-generator__wrap">
+          <div class="sec-generator__content">
+			<p id="result"></p>
+			  <br>
+            <div class="select-el select-el--hide sec-generator__el" data-hide="#hide-1">
+              <div class="select-el__top">Выберите категорию</div>
+              <ul class="select-el__dropdown">
+                <li class="select-el__dropdown-el active">Выберите категорию</li>
+                <li class="select-el__dropdown-el" onclick="LoadCategory(&#39;theatre&#39;);">Театр</li>
+                <li class="select-el__dropdown-el" onclick="LoadCategory(&#39;opera&#39;);">Опера</li>
+                <li class="select-el__dropdown-el" onclick="LoadCategory(&#39;balet&#39;);">Балет</li>
+                <li class="select-el__dropdown-el" onclick="LoadCategory(&#39;standup&#39;);">Стендап</li>
+                <li class="select-el__dropdown-el" onclick="LoadCategory(&#39;exhibition&#39;);">Выставка</li>
+              </ul>
+            </div>
+            <div class="hide-block" id="hide-1">
+              <div class="select-el sec-generator__el">
+                <div class="select-el__top">Выберите название мероприятия</div>
+                <ul class="select-el__dropdown" id="presentationul">
+                  <li class="select-el__dropdown-el active">Выберите название мероприятия</li>
+				  				  <li class="select-el__dropdown-el theatre" onclick="presentationid = &#39;57&#39;;">Фауст. 4 стена</li>
+				  				  <li class="select-el__dropdown-el theatre" onclick="presentationid = &#39;58&#39;;">Анна Каренина</li>
+				  				  <li class="select-el__dropdown-el theatre" onclick="presentationid = &#39;59&#39;;">Раневская «Сквозь смех и слезы»</li>
+				  				  <li class="select-el__dropdown-el theatre" onclick="presentationid = &#39;61&#39;;">Дубровский</li>
+				  				  <li class="select-el__dropdown-el theatre" onclick="presentationid = &#39;62&#39;;">Старший сын</li>
+				  				  <li class="select-el__dropdown-el theatre" onclick="presentationid = &#39;63&#39;;">Человек из Подольска</li>
+				  				  <li class="select-el__dropdown-el opera" onclick="presentationid = &#39;64&#39;;">Князь Игорь</li>
+				  				  <li class="select-el__dropdown-el opera" onclick="presentationid = &#39;65&#39;;">Фауст</li>
+				  				  <li class="select-el__dropdown-el opera" onclick="presentationid = &#39;66&#39;;">Алеко</li>
+				  				  <li class="select-el__dropdown-el opera" onclick="presentationid = &#39;67&#39;;">Ермак</li>
+				  				  <li class="select-el__dropdown-el balet" onclick="presentationid = &#39;68&#39;;">Лебединое озеро</li>
+				  				  <li class="select-el__dropdown-el balet" onclick="presentationid = &#39;69&#39;;">Золушка</li>
+				  				  <li class="select-el__dropdown-el balet" onclick="presentationid = &#39;70&#39;;">Жизель</li>
+				  				  <li class="select-el__dropdown-el balet" onclick="presentationid = &#39;71&#39;;">Спартак</li>
+				  				  <li class="select-el__dropdown-el standup" onclick="presentationid = &#39;72&#39;;">Секретный состав</li>
+				  				  <li class="select-el__dropdown-el standup" onclick="presentationid = &#39;73&#39;;">Open Mic: опытные комики</li>
+				  				  <li class="select-el__dropdown-el standup" onclick="presentationid = &#39;74&#39;;">Чёрный Stand-up</li>
+				  				  <li class="select-el__dropdown-el standup" onclick="presentationid = &#39;75&#39;;">Ночной Stand-up</li>
+				  				  <li class="select-el__dropdown-el standup" onclick="presentationid = &#39;76&#39;;">Стендап Лайнап</li>
+				  				  <li class="select-el__dropdown-el standup" onclick="presentationid = &#39;77&#39;;">Big Stand Up</li>
+				  				  <li class="select-el__dropdown-el standup" onclick="presentationid = &#39;78&#39;;">Взрослый стендап!</li>
+				  				  <li class="select-el__dropdown-el exhibition" onclick="presentationid = &#39;79&#39;;">GUILTY SHOW - гастрономический театр </li>
+				  				  <li class="select-el__dropdown-el exhibition" onclick="presentationid = &#39;80&#39;;">Атлантида.AI</li>
+				  				  <li class="select-el__dropdown-el exhibition" onclick="presentationid = &#39;81&#39;;">Город-сад: мультивселенные</li>
+				  				  <li class="select-el__dropdown-el exhibition" onclick="presentationid = &#39;82&#39;;">Lila</li>
+				  				  <li class="select-el__dropdown-el exhibition" onclick="presentationid = &#39;83&#39;;">В далёкой-далёкой Галактике</li>
+				  				  <li class="select-el__dropdown-el exhibition" onclick="presentationid = &#39;84&#39;;">Живёшь лишь однажды</li>
+				  				  <li class="select-el__dropdown-el exhibition" onclick="presentationid = &#39;85&#39;;">Между землей и небом</li>
+				  				  <li class="select-el__dropdown-el theatre" onclick="presentationid = &#39;86&#39;;">Мастер и Маргарита </li>
+				  				  <li class="select-el__dropdown-el standup" onclick="presentationid = &#39;90&#39;;">НОВОГОДНИЙ STAND UP</li>
+				                  </ul>
+              </div>
+              <div class="select-el sec-generator__el">
+                <div class="select-el__top">Город</div>
+                <ul class="select-el__dropdown">
+                  <li class="select-el__dropdown-el active">Выберите город</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;abakan&#39;;">Абакан</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Aznakaevo&#39;;">Азнакаево</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;azov &#39;;">Азов</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Aksai&#39;;">Аксай</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;alapaevsk &#39;;">Алапаевск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Alatur&#39;;">Алатырь </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Alexandrov&#39;;">Александров</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;alekseevka&#39;;">Алексеевка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Aleksin&#39;;">Алексин</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;alishta&#39;;">Алушта</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Alchevsk&#39;;">Алчевск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;almetevsk&#39;;">Альметьевск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;amursk&#39;;">Амурск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;anapa&#39;;">Анапа</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Angarsk&#39;;">Ангарск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;anzhero-sudzhensk&#39;;">Анжеро-Судженск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Apatitu&#39;;">Апатиты </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Apsheronsk&#39;;">Апшеронск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;arzamas&#39;;">Арзамас</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Arkadak&#39;;">Аркадак</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;armavir&#39;;">Армавир</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39; Arsenev&#39;;">Арсеньев </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;artem&#39;;">Артём</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39; Artemovskii&#39;;">Артёмовский </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;arkhangelsk&#39;;">Архангельск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Asbest&#39;;">Асбест </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;asbest&#39;;">Асбест</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;asino &#39;;">Асино</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;astrahan&#39;;">Астрахань</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Atkarsk&#39;;">Аткарск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ahtubinsk&#39;;">Ахтубинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;achinsk &#39;;">Ачинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Aha&#39;;">Аша </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Balabanovo&#39;;">Балабаново </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;balakovo&#39;;">Балаково</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Balahna&#39;;">Балахна</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Balashikha&#39;;">Балашиха</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;balashov&#39;;">Балашов</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Baltiysk&#39;;">Балтийск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;barabinsk&#39;;">Барабинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;barnaul&#39;;">Барнаул</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Bataysk&#39;;">Батайск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Baxhisarai&#39;;">Бахчисарай </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;bezheck&#39;;">Бежецк</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Bezenhuk&#39;;">Безенчук</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;belaya-kalitva&#39;;">Белая Калитва</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;belgorod&#39;;">Белгород</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Belebei&#39;;">Белебей</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Belovo&#39;;">Белово </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;belogorsk&#39;;">Белогорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Bilokurakyne&#39;;">Белокуракино</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;belokurikha&#39;;">Белокуриха</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;belomorsk&#39;;">Беломорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;beloreck&#39;;">Белорецк</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;belorechensk&#39;;">Белореченск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;beloyarskij&#39;;">Белоярский</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;berdsk&#39;;">Бердск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Berezniki&#39;;">Березники</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Berezovskiy&#39;;">Березовский</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Biysk &#39;;">Бийск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;birobidzhan&#39;;">Биробиджан</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;birsk&#39;;">Бирск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;blagoveshensk&#39;;">Благовещенск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Bobrov&#39;;">Бобров </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Bogdanovih&#39;;">Богданович </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Bogorosdk&#39;;">Богородск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;bogotol&#39;;">Боготол</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;boksitogorsk&#39;;">Бокситогорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Bologoe&#39;;">Бологое</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;bolshoj-kamen&#39;;">Большой Камень</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Bor&#39;;">Бор</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Borza&#39;;">Борзя </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Borisoglebeks&#39;;">Борисоглебск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;borovichi&#39;;">Боровичи</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;bratsk&#39;;">Братск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Bronnicy&#39;;">Бронницы </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;bryansk&#39;;">Брянск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;bugulma&#39;;">Бугульма</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Buguruslan&#39;;">Бугуруслан </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Buddenovsk&#39;;">Буденновск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;buzuluk&#39;;">Бузулук</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Bui&#39;;">Буй                                                                                                                                            </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Buturlinivka&#39;;">Бутурлиновка </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Valdai&#39;;">Валдай</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Baivuki&#39;;">Валуйки </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Velikiye Luki&#39;;">Великие Луки</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;veliki-novgorod&#39;;">Великий Новгород</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Velikiyustug&#39;;">Великий Устюг</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Belsk&#39;;">Вельск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Verezagino&#39;;">Верещагина </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Verhniy Ufaley&#39;;">Верхний Уфалей</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Verhnyaa Pyshma&#39;;">Верхняя Пышма</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;verkhnyaya-salda&#39;;">Верхняя Салда</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;vidnoe &#39;;">Видное</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;vilyuchinsk&#39;;">Вилючинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Bixorevka&#39;;">Вихоревка </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Vishuga&#39;;">Вичуга</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;vladivostok &#39;;">Владивосток</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;vladimir&#39;;">Владимир</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;volgograd&#39;;">Волгоград</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;volgodonsk&#39;;">Волгодонск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Volgskiy&#39;;">Волжский </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;vologda&#39;;">Вологда</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Volokolamck &#39;;">Волоколамск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Volkhov&#39;;">Волхов </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Volsk&#39;;">Вольск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;vorkuta&#39;;">Воркута </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;voronezh&#39;;">Воронеж </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;voskresensk&#39;;">Воскресенск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;votkins&#39;;">Воткинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;vsevolzhsk&#39;;">Всеволожск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;viborg&#39;;">Выборг</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;vyksa&#39;;">Выкса</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;VushniyVolochek&#39;;">Вышний Волочек</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;vyazniki&#39;;">Вязники</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Vyazma&#39;;">Вязьма</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;vyatskie-polyany&#39;;">Вятские Поляны</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;gagarin&#39;;">Гагарин</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;gatchina&#39;;">Гатчина</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Gelendzhik&#39;;">Геленджик</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Georgievsk&#39;;">Георгиевск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Glazov&#39;;">Глазов</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Golitsyno&#39;;">Голицыно</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Gorlovka&#39;;">Горловка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;gorno-altaisk&#39;;">Горно-Алтайск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Goriyachiy Kliuch&#39;;">Горячий Ключ</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Gremahinsk&#39;;">Гремячинск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Gryazi&#39;;">Грязи</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Gubaxi&#39;;">Губаха</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;gubkinskiy&#39;;">Губкинский</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Gukovo&#39;;">Гуково</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Gusev&#39;;">Гусев</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;gusinoozersk&#39;;">Гусиноозерск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;gus-hrustalnij&#39;;">Гусь-Хрустальний </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;dalnegorsk&#39;;">Дальнегорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;dalnerechensk&#39;;">Дальнереченск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;dankov&#39;;">Данков</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Dedovsk&#39;;">Дедовск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;derbent &#39;;">Дербент</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;derbent&#39;;">Дербент </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;desnogorsk&#39;;">Десногорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Djankoy&#39;;">Джанкой</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;dzerhinsk &#39;;">Дзержинск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Dzerginsk&#39;;">Дзержинск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;divnogorsk&#39;;">Дивногорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;dimitrovgrad&#39;;">Димитровград</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Dinskaya&#39;;">Динская</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Dmitrov&#39;;">Дмитров</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Dobryanka&#39;;">Добрянка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Dolgoprudny&#39;;">Долгопрудный</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;domodedovo&#39;;">Домодедово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;donetsk&#39;;">Донецк</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;dubna&#39;;">Дубна</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Dudinka&#39;;">Дудинка </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;dyurtyuli&#39;;">Дюртюли</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;evpatoriya&#39;;">Евпатория</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Yegoryevsk&#39;;">Егорьевск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;eisk&#39;;">Ейск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ekaterinburg&#39;;">Екатеринбург</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;elabuga&#39;;">Елабуга</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;elec&#39;;">Елец</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;elizovo&#39;;">Елизово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Emanhilinsk&#39;;">Еманжелинск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Erhov&#39;;">Ершов</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Essenteki&#39;;">Ессентуки </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Efremov&#39;;">Ефремов </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Jeleznowodsk &#39;;">Железноводск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;zheleznogorsk&#39;;">Железногорск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;zheleznogorsk-ilimskij&#39;;">Железногорск-Илимский </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Zheleznodorozhnyy&#39;;">Железнодорожный</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;zhigulevsk&#39;;">Жигулёвск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;gukovsliy&#39;;">Жуковский</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;zavodoukovsk&#39;;">Заводоуковск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Zavolhe&#39;;">Заволжье </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;zainsk&#39;;">Заинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Zaregnii&#39;;">Заречный </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;zarinsk&#39;;">Заринск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Zverevo&#39;;">Зверево</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;zelenogorsk&#39;;">Зеленогорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;zelenograd&#39;;">Зеленоград</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;zelenogradsk&#39;;">Зеленоградск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;zelenodolsk&#39;;">Зеленодольск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Zelenokumsk&#39;;">Зеленокумск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Zernograd&#39;;">Зерноград </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Zeya&#39;;">Зея</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Zima&#39;;">Зима</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;zlatoust&#39;;">Златоуст </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Zlatoust &#39;;">Златоуст</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;znamensk &#39;;">Знаменск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ivanovo&#39;;">Иваново</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ivanteevka&#39;;">Ивантеевка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;izhevsk&#39;;">Ижевск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Izhevsk&#39;;">Ижевск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Izobilnuy&#39;;">Изобильный </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Ilovla&#39;;">Иловля</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Ipatovo &#39;;">Ипатово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;irbit&#39;;">Ирбит </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;irkutsk&#39;;">Иркутск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Isilkul&#39;;">Исилькуль </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;iskitim&#39;;">Искитим</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;istra&#39;;">Истра </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ishim&#39;;">Ишим</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ishimbaj&#39;;">Ишимбай</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;joshkar-ola&#39;;">Йошкар-Ола</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kabardinka&#39;;">Кабардинка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kazan&#39;;">Казань</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kalach&#39;;">Калач</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kalach-na-donu&#39;;">Калач-на-Дону</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kalachinsk&#39;;">Калачинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kaliningrad&#39;;">Калининград</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kaltan&#39;;">Калтан </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kaluga&#39;;">Калуга</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kamenka&#39;;">Каменка </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kamensk-uralskij&#39;;">Каменск-Уральский</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kamensk-Shahtinskiy&#39;;">Каменск-Шахтинский</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kamen-na-obi&#39;;">Камень-на-Оби</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kamyshin&#39;;">Камышин  </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kanash&#39;;">Канаш</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kansk&#39;;">Канск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kapacyk&#39;;">Карасук</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kargopol&#39;;">Каргополь</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kartali&#39;;">Карталы </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kasimov&#39;;">Касимов</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kahkanar&#39;;">Качканар </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kashura&#39;;">Кашира</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kemerevo&#39;;">Кемерово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kerch&#39;;">Керчь</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kizilurt&#39;;">Кизилюрт</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kimovsk&#39;;">Кимовск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kimry&#39;;">Кимры</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kingisepp&#39;;">Кингисепп</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kinel&#39;;">Кинель </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kinesma&#39;;">Кинешма</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kipeevck &#39;;">Киреевск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kirzhach&#39;;">Киржач</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kirishu&#39;;">Кириши</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kirov&#39;;">Киров</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kirovo-chepeck&#39;;">Кирово-Чепецк</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kirovsk&#39;;">Кировск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kiselevsk&#39;;">Киселевск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kislovodsk&#39;;">Кисловодск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Klyn&#39;;">Клин</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kovrov&#39;;">Ковров</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kogalim&#39;;">Когалым</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kolomna&#39;;">Коломна</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kolomna&#39;;">Коломна</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kolpahevo&#39;;">Колпашево </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kolpino&#39;;">Колпино</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kolhugino&#39;;">Кольчугино </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kommunar&#39;;">Коммунар </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;komsomolsk-na-amure&#39;;">Комсомольск-на-Амуре</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Konakovo&#39;;">Конаково</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kopeysk&#39;;">Копейск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;korenovsk&#39;;">Кореновск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Korkino&#39;;">Коркино </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;korolev&#39;;">Королёв</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;korsakov&#39;;">Корсаков</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;koryazhma&#39;;">Коряжма</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kistomyksha&#39;;">Костомукша </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kostroma&#39;;">Кострома</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kotelnikovo&#39;;">Котельниково </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kotelnih&#39;;">Котельнич </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kotlas &#39;;">Котлас</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kotovo&#39;;">Котово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kotovck&#39;;">Котовск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kohma&#39;;">Кохма</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;krasnogorsk&#39;;">Красногорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;krasnodar&#39;;">Краснодар</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;krasnoznamensk&#39;;">Краснознаменск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Krasnokamensk&#39;;">Краснокаменск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Krasnokamsk&#39;;">Краснокамск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kracnoperekopsk&#39;;">Красноперекопск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;krasnoturinsk&#39;;">Краснотурьинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;krasnoufimsk&#39;;">Красноуфимск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;krasnoufimsk&#39;;">Красноуфимск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;krasnoyarsk&#39;;">Красноярск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Krasnii kut&#39;;">Красный Кут </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Krasnyy Luch&#39;;">Красный Луч</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Red Sulin&#39;;">Красный сулин</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Red Sulin&#39;;">Красный Сулин</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kropotkin&#39;;">Кропоткин</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;krymsk&#39;;">Крымск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kstovo&#39;;">Кстово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kubinka&#39;;">Кубинка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kyvanduk&#39;;">Кувандык</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kudrovo&#39;;">Кудрово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kudymkar&#39;;">Кудымкар </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kuzneck&#39;;">Кузнецк</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kujbyshev&#39;;">Куйбышев</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kulebaki&#39;;">Кулебаки </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kungur&#39;;">Кунгур</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kurgan&#39;;">Курган</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kursk&#39;;">Курск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kurchatov&#39;;">Курчатов</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;kushva&#39;;">Кушва</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kuzul&#39;;">Кызыл</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Kushtum&#39;;">Кыштым</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Lubinsk&#39;;">Лабинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;labytnangi&#39;;">Лабытнанги</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;langepas&#39;;">Лангепас</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Lebedan&#39;;">Лебедян </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Leninogorsk&#39;;">Лениногорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;leninsk-kuzneckij&#39;;">Ленинск-Кузнецкий</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Lensk&#39;;">Ленск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Lermontov&#39;;">Лермонтов </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;lesnoj&#39;;">Лесной</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Lesnoi &#39;;">Лесной</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;lesozavodsk&#39;;">Лесозаводск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;lesosibirsk&#39;;">Лесосибирск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Livnu&#39;;">Ливны</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;lipetsk&#39;;">Липецк</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Liski&#39;;">Лиски</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Lobnya&#39;;">Лобня</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Losino-Petrovskyi&#39;;">Лосино-Петровский</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Lugansk&#39;;">Луганск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Liskovo&#39;;">Лысково </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;bald&#39;;">Лысьва</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;lisva &#39;;">Лысьва</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;litkarino&#39;;">Лыткарино</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Lubercu&#39;;">Люберцы</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;lyudinovo&#39;;">Людиново</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;lyantor&#39;;">Лянтор</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;magadan&#39;;">Магадан</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;magnitogorsk&#39;;">Магнитогорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;maikop&#39;;">Майкоп</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;makeevka&#39;;">Макеевка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;maloyaroslavec&#39;;">Малоярославец</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Mariupol&#39;;">Мариуполь</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Marks&#39;;">Маркс</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;makhachkala&#39;;">Махачкала</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;megion&#39;;">Мегион</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;mednogorsk&#39;;">Медногорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Mednogorsk&#39;;">Медногорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;mezhdurechensk&#39;;">Междуреченск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Meleuz&#39;;">Мелеуз </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Miacc&#39;;">Миасс</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Millerovo&#39;;">Миллерово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39; mineralnye vody&#39;;">Минеральные Воды </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;minusinsk&#39;;">Минусинск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;mirnyj&#39;;">Мирный</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Mihaylovka&#39;;">Михайловка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Mihailovsk&#39;;">Михайловск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;michurinsk&#39;;">Мичуринск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;mozhaisk&#39;;">Можайск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;mozhga&#39;;">Можга </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Mozga&#39;;">Можга</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Mozdok&#39;;">Моздок </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Monino&#39;;">Монино </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;monchegorsk&#39;;">Мончегорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Morozovsk&#39;;">Морозовск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Morhansk&#39;;">Моршанск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;moscow&#39;;">Москва</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Mohovaiya&#39;;">Моховая</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;muravlenko&#39;;">Муравленко</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;murino&#39;;">Мурино</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;murmansk&#39;;">Мурманск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;murom&#39;;">Муром</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Mtsensk&#39;;">Мценск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;myski&#39;;">Мыски</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;mitishi&#39;;">Мытищи</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;naberezhniye-chelni&#39;;">Набережные Челны</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nadim&#39;;">Надым</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Nazarovo&#39;;">Назарово </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nazran&#39;;">Назрань</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nalchik&#39;;">Нальчик </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Naro-Fominsk&#39;;">Наро-Фоминск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;naryan-mar&#39;;">Нарьян-Мар</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nakhodka&#39;;">Находка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nevinnovimsk&#39;;">Невинномысск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Nevinsk&#39;;">Невьянск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Nelidovo&#39;;">Нелидово </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;neman&#39;;">Неман </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Neriungri&#39;;">Нерюнгри</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;neryungri&#39;;">Нерюнгри</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Neftekamsk&#39;;">Нефтекамск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;neftyugansk&#39;;">Нефтеюганск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nizhnevartovsk&#39;;">Нижневартовск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nizhnevartovsk&#39;;">Нижневартовск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nizhnekamsk&#39;;">Нижнекамск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nizhneudinsk&#39;;">Нижнеудинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nizhneudinsk&#39;;">Нижнеудинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Niznii lomov&#39;;">Нижний Ломов </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Nizhny Novgorod&#39;;">Нижний Новгород</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nizhniy-tagil&#39;;">Нижний Тагил</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nikolaevsk-na-amure&#39;;">Николаевск-на-Амуре</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Nikolskoe&#39;;">Никольское </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;novoaltajsk&#39;;">Новоалтайск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Novovoroneg&#39;;">Нововоронеж</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Novodvinsk&#39;;">Новодвинск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;novozybkov&#39;;">Новозыбков</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;novokuznetsk&#39;;">Новокузнецк</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;novokuibishevsk&#39;;">Новокуйбышевск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;novomoskovsk&#39;;">Новомосковск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Novopavlovsk&#39;;">Новопавловск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;novopokrovskaya&#39;;">Новопокровская </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;novorosiisk&#39;;">Новороссийск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Novosibirsk&#39;;">Новосибирск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Novotroick&#39;;">Новотроицк</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;novouralsk&#39;;">Новоуральск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Novocheboksarsk&#39;;">Новочебоксарск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;novocherkassk&#39;;">Новочеркасск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;novoshakhtinsk&#39;;">Новошахтинск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;noviy-urengoi&#39;;">Новый Уренгой</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;noginsk &#39;;">Ногинск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;norilsk&#39;;">Норильск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;noyabrsk&#39;;">Ноябрьск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nyagan&#39;;">Нягань</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;nyandoma&#39;;">Няндома</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Ob&#39;;">Оби</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;obninsk&#39;;">Обнинск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Oboin&#39;;">Обоянь </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Oboin&#39;;">Обоянь </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Odincovo&#39;;">Одинцово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;odincovo&#39;;">Одинцово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ozera&#39;;">Озёра </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ozersk &#39;;">Озерск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Oktyabrskiy&#39;;">Октябрьский </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;okulovka&#39;;">Окуловка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;olenegorsk&#39;;">Оленегорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;omsk&#39;;">Омск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;omutninsk&#39;;">Омутнинск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Orel&#39;;">Орёл</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;orenburg&#39;;">Оренбург</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;orehovo-zuevo&#39;;">Орехово-Зуево</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;orsk&#39;;">Орск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;orsk &#39;;">Орск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Osa&#39;;">Оса</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;osinniki&#39;;">Осинники</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Ostrov&#39;;">Остров</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Ostrogoshzk&#39;;">Острогожск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Otradnuy&#39;;">Отрадный</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Pavlovo&#39;;">Павлово </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Pavlovskiy Posad&#39;;">Павловский Посад</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Pargolovo&#39;;">Парголово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;partizansk &#39;;">Партизанск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;pevek&#39;;">Певек</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;penza&#39;;">Пенза</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Pervomayskiy&#39;;">Первомайский </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Pervouralsk&#39;;">Первоуральск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Presley-zelesskiy&#39;;">Переславль-Залесский </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;perm&#39;;">Пермь</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Petergof&#39;;">Петергоф</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;peterhof&#39;;">Петергоф</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Petrovsk&#39;;">Петровск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;petrozavodsk&#39;;">Петрозаводск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;petropavlovsk-kamchastkij&#39;;">Петропавловск-Камчасткий</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;pechora&#39;;">Печора</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Pikalevo&#39;;">Пикалёво </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Plast&#39;;">Пласт</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;podolsk&#39;;">Подольск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;polevskoj&#39;;">Полевской</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Polisaevo&#39;;">Полысаево </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;polyarnye-zori&#39;;">Полярные Зори  </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Priozersk&#39;;">Приозерск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Priutovo&#39;;">Приютово </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;prokopevsk&#39;;">Прокопьевск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Proletarsk&#39;;">Пролетарск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;protvino&#39;;">Протвино</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;prokhladnii&#39;;">Прохладный </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;pscov&#39;;">Псков</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Pugachev&#39;;">Пугачев </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;pushkin&#39;;">Пушкин</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Pushkino&#39;;">Пушкино </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;pit-yah&#39;;">Пыть-Ях</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;pyatigorsk&#39;;">Пятигорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;radyzhniy&#39;;">Радужный</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ramenskoe&#39;;">Раменское</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Rasskazovo&#39;;">Рассказово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;revda &#39;;">Ревда</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Rez&#39;;">Реж</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;reutov&#39;;">Реутов </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Rgev&#39;;">Ржев</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Rodniki&#39;;">Родники </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;roslavl&#39;;">Рославль</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Rossosh&#39;;">Россошь</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;rostov&#39;;">Ростов-на-Дону</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Rtushevo&#39;;">Ртищево</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Rubcovsk&#39;;">Рубцовск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Rubcovsk&#39;;">Рубцовск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Ruzaevka&#39;;">Рузаевка </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Russia Polana&#39;;">Русская Поляна </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Rybisk&#39;;">Рыбинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Ribnoe&#39;;">Рыбное </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ryazan&#39;;">Рязань </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;saki&#39;;">Саки</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;salavat&#39;;">Салават</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Salerhard&#39;;">Салехард</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;salsk &#39;;">Сальск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;samara&#39;;">Самара</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sankt-peterburg&#39;;">Санкт-Петербург</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;saransk&#39;;">Саранск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sarapul&#39;;">Сарапул</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;saratov&#39;;">Саратов</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sarov&#39;;">Саров</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sasovo&#39;;">Сасово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;satka&#39;;">Сатка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;safonovo &#39;;">Сафоново</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sayanogorsk&#39;;">Саяногорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sayansk&#39;;">Саянск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sverdlovsk&#39;;">Свердловск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;svetlogorsk&#39;;">Светлогорск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Svetlograd&#39;;">Светлоград</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;svobodnij&#39;;">Свободний</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;svobodnyj&#39;;">Свободный</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sevastopol&#39;;">Севастополь</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;severobajkalsk&#39;;">Северобайкальск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Severodvick&#39;;">Северодвинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Severodonetsk&#39;;">Северодонецк</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Severomosk&#39;;">Североморск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;severouralsk&#39;;">Североуральск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;seversk&#39;;">Северск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Segezha&#39;;">Сегежа</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Semenov&#39;;">Семёнов </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sergaih&#39;;">Сергач </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sergiev-posad&#39;;">Сергиев Посад</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Serdobsk&#39;;">Сердобск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;serov&#39;;">Серов</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;serpuhov&#39;;">Серпухов</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sertolovo&#39;;">Сертолово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sibay&#39;;">Сибай </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;simferopol&#39;;">Симферополь </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Scopin&#39;;">Скопин</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Slavgorod&#39;;">Славгород </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Slavyansknakubani&#39;;">Славянск-на-Кубани</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Slavyansknakubani&#39;;">Славянск-на-Кубани</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;slancy&#39;;">Сланцы</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Slantsy&#39;;">Сланцы</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Slobodskoi&#39;;">Слободской</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;smolensk &#39;;">Смоленск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;snezhinsk&#39;;">Снежинск                                                                                    </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Covetsk&#39;;">Советск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sovetskaya-gavan&#39;;">Советская Гавань</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sovetskij&#39;;">Советский</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;solikamsk&#39;;">Соликамск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Solnchegorsk&#39;;">Солнечногорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sol-ileck&#39;;">Соль-Илецк</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sol-ileck&#39;;">Соль-Илецк</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sorochinsk&#39;;">Сорочинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sosnovoborsk&#39;;">Сосновоборск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sosnovuy Bor&#39;;">Сосновый Бор</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sosnogorsk&#39;;">Сосногорск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sochi&#39;;">Сочи</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;SpaskDalniy&#39;;">Спасск-Дальний </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Spasskoe&#39;;">Спасское </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sredneuralsk&#39;;">Среднеуральск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;stavropol&#39;;">Ставрополь</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Staraya Russa&#39;;">Старая Русса</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;stariy-oskol&#39;;">Старый оскол</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sterlitamak&#39;;">Стерлитамак</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Stregevoy&#39;;">Стрежевой</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Stroitel&#39;;">Строитель</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Stupino&#39;;">Ступино</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Surgut&#39;;">Сургут </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Suxoi log&#39;;">Сухой Лог</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sukhum&#39;;">Сухум</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sukhum&#39;;">Сухум</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sizran&#39;;">Сызрань</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sivtivkar&#39;;">Сыктывкар</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sysert&#39;;">Сысерть </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Susert&#39;;">Сысерть</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tavda&#39;;">Тавда</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Tagarnrog&#39;;">Таганрог</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;taganrog&#39;;">Таганрог</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tajshet&#39;;">Тайшет</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;talnax&#39;;">Талнах</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Tambov&#39;;">Тамбов</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tara &#39;;">Тара</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tarko-sale&#39;;">Тарко-Сале</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tatarsk &#39;;">Татарск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Tatarsk&#39;;">Татарск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Tahtagol&#39;;">Таштагол </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tashtagol&#39;;">Таштагол</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tver&#39;;">Тверь</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Teykovo&#39;;">Тейково </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;temryuk&#39;;">Темрюк </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Timashevsk&#39;;">Тимашевск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Tikhvin&#39;;">Тихвин</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Tobolsck&#39;;">Тобольск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Toduhin&#39;;">Тогучин </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Tolyatti&#39;;">Тольятти</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tomsk&#39;;">Томск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;torzhok&#39;;">Торжок</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Tosno&#39;;">Тосно</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;trekhgornyj&#39;;">Трехгорный</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Troick&#39;;">Троицк </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Tuapse&#39;;">Туапсе</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tujmazy&#39;;">Туймазы</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tujmazy&#39;;">Туймазы</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tula&#39;;">Тула</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tulun&#39;;">Тулун </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tutaev&#39;;">Тутаев</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tynda&#39;;">Тында</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;tyumen&#39;;">Тюмень </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;yvarovo&#39;;">Уварово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Uglich&#39;;">Углич</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Udomlya&#39;;">Удомля</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Uzlovaya&#39;;">Узловая</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ulan-ude&#39;;">Улан-Удэ</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ulyanovsk&#39;;">Ульяновск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ynecha&#39;;">Унеча</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;uraj&#39;;">Урай</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Uren&#39;;">Урень</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Urupinsk&#39;;">Урюпинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;usinsk&#39;;">Усинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Usman&#39;;">Усмань</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;UsolyeCibirskoe&#39;;">Усолье-Сибирское</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ussurijsk&#39;;">Уссурийск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ust-ilimsk&#39;;">Усть-Илимск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ust-katav&#39;;">Усть-Катав</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Ustb kut&#39;;">Усть-Кут</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Ust-Labinsk&#39;;">Усть-Лабинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ufa&#39;;">Уфа</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Uhta&#39;;">Ухта</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;uchali&#39;;">Учалы</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;fedorovskij&#39;;">Федоровский</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;feodosia&#39;;">Феодосия</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;fokino&#39;;">Фокино</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;frolovo&#39;;">Фролово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;fryazino&#39;;">Фрязино </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Furmanov&#39;;">Фурманов </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;habarovsk&#39;;">Хабаровск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;hanti-mansiisk&#39;;">Ханты-Мансийск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Xarabali&#39;;">Харабали </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Hvalinsk&#39;;">Хвалынск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;ximki &#39;;">Химки</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Hotkovo&#39;;">Хотьково </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;chajkovskij&#39;;">Чайковский</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Chapaevsk&#39;;">Чапаевск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Chebarkul&#39;;">Чебаркуль</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;cheboksari&#39;;">Чебоксары</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;chelyabinsk&#39;;">Челябинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Cheremhovo&#39;;">Черемхово</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Herepanovo&#39;;">Черепаново </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;cherepovec&#39;;">Череповец</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;cherkessk&#39;;">Черкесск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;chernushka&#39;;">Чернушка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;chernyakhovsk&#39;;">Черняховск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;chehov&#39;;">Чехов</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;chita&#39;;">Чита </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;chishmy&#39;;">Чишмы</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;chishmy&#39;;">Чишмы</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;chusovoj&#39;;">Чусовой</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Chadrinsk&#39;;">Шадринск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;sharypovo&#39;;">Шарыпово </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Haria&#39;;">Шарья</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;shatura&#39;;">Шатура</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;shakhty&#39;;">Шахты</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Shebekino&#39;;">Шебекино</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Shelexov&#39;;">Шелехов </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;shuya&#39;;">Шуя</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Hekino&#39;;">Щекино</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;shelkovo&#39;;">Щелково</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Sherbinka&#39;;">Щербинка</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;electrostal&#39;;">Электросталь</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;elista&#39;;">Элиста </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;engels&#39;;">Энгельс</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;yugorsk&#39;;">Югорск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Yuzhno Sakhalinsk&#39;;">Южно-Сахалинск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Uhnouralsk&#39;;">Южноуральск </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;yurga&#39;;">Юрга</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;yakutsk&#39;;">Якутск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Ialutorovsk&#39;;">Ялуторовск</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;yanaul&#39;;">Янаул</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;Yaroslavl&#39;;">Ярославль</li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;yarcevo&#39;;">Ярцево </li>
+				  				  <li class="select-el__dropdown-el" onclick="city = &#39;yasnyj&#39;;">Ясный </li>
+				                  </ul>
+              </div>
+              <div class="form-el sec-generator__el">
+                <input class="inp-def inp-def_2 form-el__inp form-def__inp" type="text" id="a" placeholder="Промокод" value="lilu">
+              </div>
+			  <div class="form-el sec-generator__el">
+                <input class="inp-def inp-def_2 form-el__inp form-def__inp" type="date" id="date" placeholder="Дата" value="">
+              </div>
+			  <div class="form-el sec-generator__el">
+                <input class="inp-def inp-def_2 form-el__inp form-def__inp" type="time" id="time" placeholder="Время" value="">
+              </div>
+			  <a class="sec-generator__btn btn-def" href="https://furious-afish.art/bilets.php?a=lilu#" onclick="Generate();"><span>Сгенерировать</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="main2.js"></script>
+  <script>
+		var categoryvar = "";
+		function LoadCategory(category){
+			categoryvar = category;
+			var elems = document.querySelectorAll("#presentationul li");
+			[].forEach.call(elems, function(el) {
+				el.style.display = 'none';
+				if(el.classList.contains(category)){
+					el.style.display = 'block';
+				}
+			});
+		}
+		
+		function Generate() {
+			var date = document.getElementById('date').value.split("-");
+			
+			location.replace("/./bilets?id=" + presentationid + "&c=" + city + "&a=" + document.getElementById('a').value + "&date=" + date[2] + "+" + date[1] + "+" + date[0] + "+" + document.getElementById('time').value);
+		}
+  </script>
+
+
+<veepn-lock-screen><template shadowrootmode="open"><style>html{box-sizing:border-box;text-size-adjust:100%;word-break:normal;-moz-tab-size:4;tab-size:4}*,:before,:after{background-repeat:no-repeat;box-sizing:border-box}:before,:after{text-decoration:inherit;vertical-align:inherit}*{padding:0;margin:0}hr{overflow:visible;height:0;color:inherit;border:0;border-top:1px solid}details,main{display:block}summary{display:list-item}small{font-size:80%}[hidden]{display:none!important}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}a{background-color:transparent}a:active,a:hover{outline-width:0}code,kbd,pre,samp{font-family:monospace}pre{font-size:1em}b,strong{font-weight:bolder}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-color:inherit;text-indent:0}iframe{border-style:none}input{border-radius:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;-moz-appearance:textfield;appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none;-moz-appearance:none;appearance:none}textarea{overflow:auto;resize:vertical}button,input,optgroup,select,textarea{font:inherit;color:inherit}optgroup{font-weight:700}button{overflow:visible}button,select{text-transform:none}button,[type=button],[type=reset],[type=submit],[role=button]{cursor:pointer}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button;-moz-appearance:button;appearance:button}button,input,select,textarea{background-color:transparent;border-style:none}button:-moz-focusring,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{outline:1px dotted ButtonText}select{-webkit-appearance:none;-moz-appearance:none;appearance:none}a:focus,button:focus,input:focus,select:focus,textarea:focus{outline-width:0}select::-ms-expand{display:none}select::-ms-value{color:currentcolor}legend{border:0;color:inherit;display:table;white-space:normal;max-width:100%}::-webkit-file-upload-button{-webkit-appearance:button;-moz-appearance:button;appearance:button;color:inherit;font:inherit}[disabled]{cursor:default}img{border-style:none}progress{vertical-align:baseline}[aria-busy=true]{cursor:progress}[aria-controls]{cursor:pointer}[aria-disabled=true]{cursor:default}ul,ol{list-style-type:none}figure{margin:0}.lock-screen{font-family:FigtreeVF,sans-serif;letter-spacing:normal;position:fixed;z-index:2147483638;top:0;right:0;bottom:0;left:0;padding:32px 40px;color:#222e3a;background-color:#fdfdfd;display:flex;flex-direction:column;row-gap:12px;overflow:auto;background-image:radial-gradient(circle at 0% 0%,#e6fffdcc,#e6fffd00 50%),radial-gradient(circle at 100% 0%,#ebfffecc,#ebfffe00 50%),radial-gradient(circle at 100% 100%,#f0f5ffcc,#f0f5ff00 50%),radial-gradient(circle at 0% 100%,#f2f2ffcc,#f2f2ff00 50%),radial-gradient(circle at 50% 50%,#fff,#fffc,#f5f5ff66,#f0f0ff33,#f0f0ff00),linear-gradient(to bottom right,#e6fffd,#f2f2ff);background-size:100% 100%;background-repeat:no-repeat}.lock-screen__header{display:flex;align-items:center;justify-content:space-between}.lock-screen__logo{display:inline-flex;align-items:center;column-gap:12px;font-size:18px;font-weight:600}.lock-screen__close{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background-color:#222e3a1a}.lock-screen__main{flex-grow:1;align-content:center}.lock-screen__container{max-width:1120px;margin-inline:auto;display:flex;align-items:center;gap:24px}@media (width < 972px){.lock-screen__container{flex-direction:column}}.lock-screen__timer{display:flex;align-items:center;justify-content:center;width:100%}.lock-screen__content{width:100%}.lock-screen__title{font-size:48px;font-weight:700;line-height:56px;margin-bottom:16px}.lock-screen__description{font-size:18px;line-height:32px;margin-bottom:24px}.lock-screen__actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.lock-screen__action{height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;text-align:center;padding:8px 24px}.upgrade-btn{color:#fff;background:linear-gradient(180deg,#20df9e,#13cf8f)}.skip-btn{color:#3066ff;border-width:1px;border-style:solid;border-color:#3066ff;position:relative}.skip-btn__tooltip{font-size:14px;line-height:24px;font-weight:400;position:absolute;z-index:1;left:50%;top:calc(100% + 18px);padding:8px 12px;color:#fff;border:1px solid #4a5764;background-color:#222e3a;border-radius:8px;width:max-content;pointer-events:none;animation:slide-in .6s ease-in-out forwards}@keyframes slide-in{0%{opacity:0;transform:translate(-50%,-100%)}to{opacity:1;transform:translate(-50%)}}.skip-btn__tooltip:after{content:"";display:block;position:absolute;z-index:1;top:-8px;left:50%;width:0;height:0;border-style:solid;border-width:0 8px 8px;border-color:transparent transparent #222e3a;transform:translate(-6px)}.skip-btn__icon{display:none}.skip-btn:disabled{cursor:not-allowed}.skip-btn:disabled .skip-btn__tooltip,.skip-btn:disabled .skip-btn__text{display:none}.skip-btn:disabled .skip-btn__icon{display:initial;animation:tick-tock .8s steps(8,end) infinite}@keyframes tick-tock{to{transform:rotate(360deg)}}.timer{position:relative;max-width:422px;width:100%;aspect-ratio:1/1;border-radius:50%;background-color:#fff;box-shadow:0 0 40px #2b374114;display:flex;align-items:center;justify-content:center;pointer-events:none;-webkit-user-select:none;user-select:none}.timer__circle-backward{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:0;max-width:100%;height:auto;opacity:.4}.timer__circle-forward{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);z-index:1;max-width:100%;height:auto;animation:sector 5s linear forwards}.timer__fire-icon{position:absolute;top:22%;left:50%;transform:translate(-50%);z-index:2}.timer__text{font-size:clamp(18px,10vw,88px);letter-spacing:-1px;text-align:center;font-variant-numeric:tabular-nums;position:relative;z-index:3}.timer--finished .timer__text{color:#98a0a9}.timer--finished .timer__circle-forward{display:none}@keyframes sector{0%{clip-path:polygon(50% 50%,0% 2%,100% 0%,100% 100%,0% 100%,0% 2%)}25%{clip-path:polygon(50% 50%,0% 2%,100% 0%,100% 100%,0% 100%,0% 100%)}25.000001%{clip-path:polygon(50% 50%,0% 2%,100% 0%,100% 100%,0% 100%)}50%{clip-path:polygon(50% 50%,0% 2%,100% 0%,100% 100%,100% 100%)}50.000001%{clip-path:polygon(50% 50%,0% 2%,100% 0%,100% 100%)}75%{clip-path:polygon(50% 50%,0% 2%,100% 0%,100% 0%)}75.000001%{clip-path:polygon(50% 50%,0% 2%,100% 0%)}to{clip-path:polygon(50% 50%,0% 2%,0% 0%)}}@media (prefers-color-scheme: dark){.lock-screen{color:#fff;background-image:radial-gradient(circle at 0% 0%,#2f4f4fcc,#2f4f4f00 50%),radial-gradient(circle at 100% 0%,#193042cc,#19304200 50%),radial-gradient(circle at 100% 100%,#1c3041cc,#1c304100 50%),radial-gradient(circle at 0% 100%,#1b263bcc,#1b263b00 50%),radial-gradient(circle at 50% 50%,#141e28,#141e28cc,#1b263b66,#1c304133,#1c304100),linear-gradient(to bottom right,#2f4f4f,#1b263b)}.lock-screen__close{background-color:#ffffff1a}.skip-btn{color:#fff;border-color:#fff}.skip-btn__tooltip{color:#222e3a;border:1px solid #f5f6f7;background-color:#fff}.skip-btn__tooltip:after{border-color:transparent transparent #fff}.timer{background-color:#191b25}.timer__circle-backward{opacity:1}.timer--finished .timer__text{color:#5c6977}}</style></template><style>@font-face{font-family:FigtreeVF;src:url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2 supports variations"),url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2-variations");font-weight:100 1000;font-display:swap}</style></veepn-lock-screen><veepn-guard-alert><template shadowrootmode="open"><style>html{box-sizing:border-box;text-size-adjust:100%;word-break:normal;-moz-tab-size:4;tab-size:4}*,:before,:after{background-repeat:no-repeat;box-sizing:border-box}:before,:after{text-decoration:inherit;vertical-align:inherit}*{padding:0;margin:0}hr{overflow:visible;height:0;color:inherit;border:0;border-top:1px solid}details,main{display:block}summary{display:list-item}small{font-size:80%}[hidden]{display:none}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}a{background-color:transparent}a:active,a:hover{outline-width:0}code,kbd,pre,samp{font-family:monospace}pre{font-size:1em}b,strong{font-weight:bolder}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-color:inherit;text-indent:0}iframe{border-style:none}input{border-radius:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;-moz-appearance:textfield;appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none;-moz-appearance:none;appearance:none}textarea{overflow:auto;resize:vertical}button,input,optgroup,select,textarea{font:inherit;color:inherit}optgroup{font-weight:700}button{overflow:visible}button,select{text-transform:none}button,[type=button],[type=reset],[type=submit],[role=button]{cursor:pointer}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button;-moz-appearance:button;appearance:button}button,input,select,textarea{background-color:transparent;border-style:none}button:-moz-focusring,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{outline:1px dotted ButtonText}select{-webkit-appearance:none;-moz-appearance:none;appearance:none}a:focus,button:focus,input:focus,select:focus,textarea:focus{outline-width:0}select::-ms-expand{display:none}select::-ms-value{color:currentcolor}legend{border:0;color:inherit;display:table;white-space:normal;max-width:100%}::-webkit-file-upload-button{-webkit-appearance:button;-moz-appearance:button;appearance:button;color:inherit;font:inherit}[disabled]{cursor:default}img{border-style:none}progress{vertical-align:baseline}[aria-busy=true]{cursor:progress}[aria-controls]{cursor:pointer}[aria-disabled=true]{cursor:default}ul,ol{list-style-type:none}figure{margin:0}.guard-popup{font-family:FigtreeVF,sans-serif;position:fixed;z-index:2147483638;top:8px;left:24px;overflow:visible;color:#222e3a;background-color:#fff;max-width:416px;width:calc(100% - 48px);border-radius:16px;box-shadow:0 4px 20px #00000040;padding:24px}.guard-popup__header{display:flex;justify-content:space-between;align-items:center;column-gap:16px;margin-bottom:24px}.guard-popup__close{display:flex;align-items:center;justify-content:center;width:24px;height:24px;opacity:.7}.guard-popup__img{line-height:0;margin-bottom:24px}.guard-popup__img img{width:100%;aspect-ratio:368/142;object-fit:cover;border-radius:12px;overflow:hidden}.guard-popup__title{font-size:24px;line-height:32px;margin-bottom:8px}.guard-popup__description{font-size:20px;line-height:28px;font-weight:500;color:#4a5764;margin-bottom:28px}.guard-popup__actions{display:flex;justify-content:flex-end;column-gap:16px}.guard-popup__btn{display:flex;align-items:center;justify-content:center;padding:8px 16px;border-radius:5px;font-size:16px;line-height:24px;font-weight:700;cursor:pointer;color:#fff;background:linear-gradient(180deg,#5695fd,#1554ff)}</style></template><style>@font-face{font-family:FigtreeVF;src:url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2 supports variations"),url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2-variations");font-weight:100 1000;font-display:swap}</style></veepn-guard-alert></body></html>
