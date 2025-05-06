@@ -6,14 +6,6 @@
   <title>KARABAS</title>
   <!-- Favicon для устранения ошибки 404 -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎫</text></svg>">
-  <!-- React и зависимости -->
-  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7.22.10/babel.min.js"></script>
-  <!-- Библиотеки для QR-кода, PNG и PDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     /* Основные сбросы и настройки */
     * {
@@ -21,10 +13,8 @@
       margin: 0;
       padding: 0;
       font-family: sans-serif;
-      outline: none;
     }
     html {
-      font-size: 100%;
       background: #020126;
       overflow-x: hidden;
       min-height: 100vh;
@@ -32,7 +22,6 @@
     body {
       background: linear-gradient(to bottom, rgba(2, 1, 38, 0.9), rgba(0, 0, 0, 0.8));
       color: #F2F2F2;
-      margin: 0;
       padding: 20px;
       min-height: 100vh;
       display: flex;
@@ -40,49 +29,38 @@
       align-items: center;
     }
     a {
-      text-decoration: none;
       color: #F2F2F2;
+      text-decoration: none;
     }
-    img {
-      max-width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-    button, input, select {
-      font-size: 100%;
+    input, select, button {
       color: #F2F2F2;
       background: none;
       border: none;
-      cursor: pointer;
-    }
-    input, select {
+      font-size: 16px;
       width: 100%;
+      padding: 10px;
     }
 
     /* Контейнеры */
     .wrapper {
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
+      flex: 1;
     }
     .container {
       max-width: 1200px;
       width: 100%;
       padding: 0 15px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
     }
 
     /* Логотип */
     .logo {
-      font-size: 60px;
+      font-size: 48px;
       font-weight: 300;
       color: #EE1C25;
       margin-bottom: 20px;
-      line-height: 1;
     }
     .logo-dark {
       color: #020126;
@@ -90,31 +68,28 @@
 
     /* Форма */
     .form-container {
-      background: rgba(0, 0, 0, 0.85);
-      padding: 25px;
-      border-radius: 10px;
-      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 8px;
       max-width: 400px;
-      margin-bottom: 25px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+      width: 100%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
     .form-field {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     .form-field label {
       display: block;
       font-size: 14px;
       font-weight: 300;
-      color: #F2F2F2;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
     .form-field input,
     .form-field select {
       background: #020126;
       border: 2px solid #F2F2F2;
-      border-radius: 6px;
-      padding: 10px;
-      font-size: 16px;
+      border-radius: 4px;
       font-weight: 400;
       transition: border-color 0.3s;
     }
@@ -124,7 +99,6 @@
     }
     .form-field input::placeholder {
       color: #8B8B8B;
-      font-weight: 300;
     }
 
     /* Кнопки */
@@ -132,23 +106,21 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 300;
       color: #F2F2F2;
-      border: 3px solid #EE1C25;
-      padding: 10px 15px;
-      border-radius: 8px;
+      border: 2px solid #EE1C25;
+      padding: 10px;
+      border-radius: 4px;
       transition: all 0.3s;
-      width: 100%;
+      cursor: pointer;
       margin-bottom: 10px;
     }
     .btn:hover {
       background: #EE1C25;
-      color: #F2F2F2;
     }
     .btn-primary {
       background: #EE1C25;
-      color: #F2F2F2;
     }
     .btn-primary:hover {
       background: #D1151E;
@@ -161,32 +133,27 @@
       background: #976FBF;
       border-color: #976FBF;
     }
-    .btn:disabled {
-      border-color: #8B8B8B;
-      color: #8B8B8B;
-      cursor: not-allowed;
-    }
 
     /* Билет */
     .ticket-container {
       background: #FFFFFF;
       color: #020126;
-      padding: 25px;
-      border-radius: 10px;
-      width: 100%;
+      padding: 20px;
+      border-radius: 8px;
       max-width: 500px;
-      margin-bottom: 25px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+      width: 100%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       position: relative;
     }
     .ticket-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     .ticket-title {
-      font-size: 48px;
+      font-size: 36px;
       font-weight: 300;
       margin-bottom: 10px;
     }
@@ -194,21 +161,19 @@
       width: 80px;
       height: 80px;
       margin: 10px auto;
-      display: block;
     }
     .ticket-image {
       width: 100%;
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 6px;
+      height: 150px;
+      background: linear-gradient(45deg, #EE1C25, #976FBF);
+      border-radius: 4px;
       margin: 10px 0;
     }
     .ticket-info {
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      margin-bottom: 15px;
+      gap: 10px;
+      margin-bottom: 10px;
     }
     .ticket-info div {
       width: 100%;
@@ -236,39 +201,38 @@
     .ticket-rules {
       border: 2px solid #020126;
       padding: 10px;
-      border-radius: 6px;
+      border-radius: 4px;
       font-size: 10px;
-      font-weight: 400;
     }
     .ticket-rules h4 {
       font-size: 12px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
     .age-restriction {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 10px;
+      right: 10px;
       font-size: 12px;
       font-weight: 700;
       border: 2px solid #020126;
-      padding: 3px 6px;
+      padding: 2px 5px;
       border-radius: 4px;
       background: #FFFFFF;
     }
 
     /* Другие мероприятия */
     .other-events {
-      background: rgba(0, 0, 0, 0.85);
-      padding: 25px;
-      border-radius: 10px;
-      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 8px;
       max-width: 500px;
-      margin-bottom: 25px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+      width: 100%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
     .other-events h3 {
-      font-size: 48px;
+      font-size: 36px;
       font-weight: 300;
       color: #EE1C25;
       margin-bottom: 15px;
@@ -278,24 +242,23 @@
       align-items: center;
       background: #020126;
       padding: 10px;
-      border-radius: 6px;
+      border-radius: 4px;
       margin-bottom: 10px;
       transition: transform 0.3s;
     }
     .other-events a:hover {
       transform: scale(1.03);
     }
-    .other-events img {
+    .other-events .event-image {
       width: 100px;
       height: 60px;
-      object-fit: cover;
+      background: linear-gradient(45deg, #976FBF, #EE1C25);
       border-radius: 4px;
       margin-right: 10px;
     }
     .other-events h4 {
       font-size: 16px;
       font-weight: 400;
-      color: #F2F2F2;
     }
     .other-events p {
       font-size: 12px;
@@ -305,42 +268,38 @@
 
     /* Политика конфиденциальности */
     .privacy-section {
-      background: rgba(0, 0, 0, 0.85);
-      padding: 25px;
-      border-radius: 10px;
-      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 8px;
       max-width: 400px;
-      margin-bottom: 25px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+      width: 100%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
     .privacy-section h3 {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 300;
-      color: #F2F2F2;
       margin-bottom: 10px;
     }
     .privacy-section p {
       font-size: 14px;
       font-weight: 400;
-      color: #F2F2F2;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     /* Футер */
     .footer {
       background: #000;
-      padding: 50px 0;
+      padding: 40px 0;
       width: 100%;
       margin-top: auto;
     }
     .footer p {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 300;
-      color: #F2F2F2;
     }
     .footer a {
-      border-bottom: 3px solid #F2F2F2;
-      padding-bottom: 3px;
+      border-bottom: 2px solid #F2F2F2;
       transition: color 0.3s;
     }
     .footer a:hover {
@@ -359,383 +318,384 @@
     }
     @media (max-width: 600px) {
       .logo {
-        font-size: 40px;
+        font-size: 36px;
       }
       .form-container, .ticket-container, .other-events, .privacy-section {
         padding: 15px;
-        max-width: 100%;
       }
       .btn {
         font-size: 16px;
-        padding: 8px 12px;
-      }
-      .ticket-image {
-        height: 150px;
+        padding: 8px;
       }
       .ticket-title {
-        font-size: 36px;
+        font-size: 28px;
       }
       .other-events h3 {
-        font-size: 36px;
+        font-size: 28px;
       }
-      .age-restriction {
-        top: 10px;
-        right: 10px;
-        font-size: 10px;
+      .ticket-image {
+        height: 120px;
       }
     }
   </style>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="text/babel">
-    const { useState, useRef, useEffect } = React;
-
+  <div class="wrapper">
+    <div class="container">
+      <h1 class="logo">KARABAS</h1>
+      <div class="form-container" id="form-section">
+        <div class="form-field">
+          <label>Тип мероприятия</label>
+          <select id="event-type">
+            <option value="">Выберите тип</option>
+            <option value="opera">Опера</option>
+            <option value="theater">Театр</option>
+            <option value="ballet">Балет</option>
+            <option value="standup">Стендап</option>
+            <option value="exhibition">Выставка</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Название мероприятия</label>
+          <select id="event-name">
+            <option value="">Выберите мероприятие</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Дата</label>
+          <input type="date" id="date">
+        </div>
+        <div class="form-field">
+          <label>Время</label>
+          <input type="time" id="time">
+        </div>
+        <div class="form-field">
+          <label>Город</label>
+          <input type="text" id="city" placeholder="Город">
+        </div>
+        <div class="form-field">
+          <label>ФИО</label>
+          <input type="text" id="full-name" placeholder="ФИО">
+        </div>
+        <div class="form-field">
+          <label>Ряд</label>
+          <select id="row">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Место</label>
+          <select id="seat">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Стоимость</label>
+          <input type="text" id="price" placeholder="Стоимость">
+        </div>
+        <button class="btn btn-primary" onclick="generateTicket()">Сгенерировать</button>
+      </div>
+      <div class="privacy-section">
+        <h3>Политика конфиденциальности</h3>
+        <p>
+          Настоящие фейковые билеты созданы исключительно в демонстрационных целях. Мы не собираем,
+          не храним и не передаем персональные данные, введенные в форму, включая имя, город и другие
+          сведения. Все данные остаются на вашем устройстве и используются только для генерации билета.
+          Мы не несем ответственности за использование сгенерированных билетов в реальных мероприятиях,
+          так как они являются фейковыми и не имеют юридической силы. Используйте их на свой страх и риск.
+        </p>
+      </div>
+      <div class="ticket-container" id="ticket-section" style="display: none;">
+        <div class="ticket-header">
+          <h3 class="logo logo-dark">KARABAS</h3>
+          <p>ЭЛЕКТРОННЫЙ БИЛЕТ<br>E-ticket #1745515021</p>
+        </div>
+        <div class="age-restriction">18+</div>
+        <p class="ticket-title" id="ticket-event-name"></p>
+        <canvas class="ticket-qr" id="qr-code"></canvas>
+        <p id="ticket-date"></p>
+        <p id="ticket-time"></p>
+        <div class="ticket-image" id="ticket-image"></div>
+        <div class="ticket-info">
+          <div>
+            <p><strong>ГОРОД</strong><br><span id="ticket-city"></span></p>
+            <p><strong>РЯД, МЕСТО</strong><br><span id="ticket-row-seat"></span></p>
+          </div>
+          <div>
+            <p><strong>ФИО</strong><br><span id="ticket-full-name"></span></p>
+            <p><strong>НОМЕР ЗАКАЗА #</strong><br>1745515021</p>
+            <p><strong>СТОИМОСТЬ</strong><br><span id="ticket-price"></span></p>
+          </div>
+        </div>
+        <div class="ticket-barcode"></div>
+        <div class="ticket-rules">
+          <h4>ПРАВИЛА ИСПОЛЬЗОВАНИЯ И ВОЗВРАТА БИЛЕТА</h4>
+          <p>
+            1. Настоящий электронный билет является равным по консульству мероприятий.<br>
+            2. Указанный идентификатор (штрих-код), содержащий в себе информацию о владельце мероприятия.<br>
+            3. В случае возникновения каких-либо проблем, таких как качество изображения, физическое повреждение.<br>
+            4. Пиротехника запрещена на мероприятии в случае отсутствия технических специалистов.<br>
+            5. Стоимость настоящего электронного билета может быть возвращена по первому требованию.<br>
+            6. С условием обмена вы можете ознакомиться на нашем сайте.
+          </p>
+        </div>
+      </div>
+      <div class="form-container" id="ticket-buttons" style="display: none;">
+        <button class="btn btn-primary" onclick="downloadPNG()">Скачать как PNG</button>
+        <button class="btn btn-primary" onclick="downloadPDF()">Скачать как PDF</button>
+        <button class="btn" onclick="goBack()">Назад</button>
+        <button class="btn btn-secondary" onclick="goToEventSite()">Перейти на сайт мероприятия</button>
+      </div>
+      <div class="other-events" id="other-events" style="display: none;">
+        <h3>Другие мероприятия</h3>
+        <a href="event-lebedinoe.html">
+          <div class="event-image"></div>
+          <div>
+            <h4>Лебединое озеро</h4>
+            <p>30 Апреля 2025, 19:00</p>
+          </div>
+        </a>
+        <a href="event-traviata.html">
+          <div class="event-image"></div>
+          <div>
+            <h4>Травиата</h4>
+            <p>5 Мая 2025, 18:30</p>
+          </div>
+        </a>
+        <a href="event-zhenskiy.html">
+          <div class="event-image"></div>
+          <div>
+            <h4>Женский стендап</h4>
+            <p>10 Мая 2025, 20:00</p>
+          </div>
+        </a>
+      </div>
+      <footer class="footer">
+        <div class="container">
+          <p>
+            Все права защищены ООН КАРАБАС, лицензионное соглашение на 2025 год.
+            <a href="license.html" target="_blank">Подробнее о лицензии</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
     const events = {
       opera: [
-        { name: "Игрок", image: "igrok.png", site: null },
-        { name: "Золотой петушок", image: "zolotoy_petushok.png", site: null },
-        { name: "Сорочинская ярмарка", image: "sorochinskaya_yarmarka.png", site: null },
-        { name: "Травиата", image: "traviata.png", site: "https://www.mariinsky.ru" }
+        { name: "Игрок", site: null },
+        { name: "Золотой петушок", site: null },
+        { name: "Сорочинская ярмарка", site: null },
+        { name: "Травиата", site: "https://www.mariinsky.ru" }
       ],
       theater: [
-        { name: "Самоубийца", image: "samoubiitsa.png", site: null },
-        { name: "Тойбеле и ее демон", image: "toybele_i_ee_demon.png", site: null },
-        { name: "Красавица и Чудовище", image: "krasavitsa_i_chudovishche.png", site: null }
+        { name: "Самоубийца", site: null },
+        { name: "Тойбеле и ее демон", site: null },
+        { name: "Красавица и Чудовище", site: null }
       ],
       ballet: [
-        { name: "Жар-птица", image: "zharptitsa.png", site: null },
-        { name: "Шехеразада", image: "sheherazada.png", site: null },
-        { name: "Лебединое озеро", image: "lebedinoe_ozero.png", site: "https://www.bolshoi.ru" },
-        { name: "Анюта", image: "anyuta.png", site: null },
-        { name: "Журавлиная песнь", image: "zhuravlinaya_pesn.png", site: null }
+        { name: "Жар-птица", site: null },
+        { name: "Шехеразада", site: null },
+        { name: "Лебединое озеро", site: "https://www.bolshoi.ru" },
+        { name: "Анюта", site: null },
+        { name: "Журавлиная песнь", site: null }
       ],
       standup: [
-        { name: "Женский стендап", image: "zhenskiy_stendap.png", site: "https://standupmoscow.ru" },
-        { name: "Стендап в Москве", image: "stendap_v_moskve.png", site: null }
+        { name: "Женский стендап", site: "https://standupmoscow.ru" },
+        { name: "Стендап в Москве", site: null }
       ],
       exhibition: [
-        { name: "Театр балета Эйфмана. Только любовь", image: "teatr_baleta_eifmana_tolko_lyubov.png", site: null },
-        { name: "Путь к совершенству", image: "put_k_sovershenstvu.png", site: null },
-        { name: "Картинки с выставки", image: "kartinki_s_vystavki.png", site: null }
+        { name: "Театр балета Эйфмана. Только любовь", site: null },
+        { name: "Путь к совершенству", site: null },
+        { name: "Картинки с выставки", site: null }
       ]
     };
 
-    const App = () => {
-      const [eventType, setEventType] = useState('');
-      const [eventName, setEventName] = useState('');
-      const [date, setDate] = useState('');
-      const [time, setTime] = useState('');
-      const [city, setCity] = useState('');
-      const [fullName, setFullName] = useState('');
-      const [row, setRow] = useState('1');
-      const [seat, setSeat] = useState('1');
-      const [price, setPrice] = useState('');
-      const [ticketGenerated, setTicketGenerated] = useState(false);
-      const [selectedEvent, setSelectedEvent] = useState(null);
-      const qrCodeRef = useRef(null);
-      const ticketRef = useRef(null);
+    let selectedEvent = null;
 
-      const updateEventList = (type) => {
-        setEventType(type);
-        setEventName('');
-      };
-
-      const generateTicket = () => {
-        if (!eventType || !eventName || !date || !time || !city || !fullName || !row || !seat || !price) {
-          alert('Пожалуйста, заполните все поля!');
-          return;
-        }
-        const event = events[eventType].find(e => e.name === eventName);
-        setSelectedEvent(event);
-        setTicketGenerated(true);
-
-        if (qrCodeRef.current) {
-          qrCodeRef.current.innerHTML = '';
-          new QRCode(qrCodeRef.current, {
-            text: `FAKE TICKET ${fullName}`,
-            width: 80,
-            height: 80,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-          });
-        }
-      };
-
-      const goBack = () => {
-        setTicketGenerated(false);
-        setEventType('');
-        setEventName('');
-        setDate('');
-        setTime('');
-        setCity('');
-        setFullName('');
-        setRow('1');
-        setSeat('1');
-        setPrice('');
-        setSelectedEvent(null);
-      };
-
-      const goToEventSite = () => {
-        if (selectedEvent && selectedEvent.site) {
-          window.open(selectedEvent.site, '_blank');
-        } else {
-          alert('Сайт для этого мероприятия недоступен.');
-        }
-      };
-
-      const downloadPNG = () => {
-        html2canvas(ticketRef.current).then(canvas => {
-          const link = document.createElement('a');
-          link.download = 'fake-ticket.png';
-          link.href = canvas.toDataURL('image/png');
-          link.click();
+    // Обновление списка мероприятий
+    document.getElementById('event-type').addEventListener('change', (e) => {
+      const type = e.target.value;
+      const eventNameSelect = document.getElementById('event-name');
+      eventNameSelect.innerHTML = '<option value="">Выберите мероприятие</option>';
+      if (type && events[type]) {
+        events[type].forEach(event => {
+          const option = document.createElement('option');
+          option.value = event.name;
+          option.textContent = event.name;
+          eventNameSelect.appendChild(option);
         });
-      };
+      }
+    });
 
-      const downloadPDF = () => {
-        html2canvas(ticketRef.current).then(canvas => {
-          const imgData = canvas.toDataURL('image/png');
-          const { jsPDF } = window.jspdf;
-          const pdf = new jsPDF({
-            orientation: 'portrait',
-            unit: 'px',
-            format: [canvas.width, canvas.height]
-          });
-          pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-          pdf.save('fake-ticket.pdf');
-        });
-      };
+    // Генерация простого QR-кода на Canvas
+    function generateQRCode(text) {
+      const canvas = document.getElementById('qr-code');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 80;
+      canvas.height = 80;
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, 80, 80);
+      ctx.fillStyle = '#000000';
+      const size = 4;
+      for (let i = 0; i < 20; i++) {
+        for (let j = 0; j < 20; j++) {
+          if (Math.random() > 0.5) {
+            ctx.fillRect(i * size, j * size, size, size);
+          }
+        }
+      }
+    }
 
-      return (
-        <div className="wrapper">
-          <div className="container">
-            <h1 className="logo">KARABAS</h1>
+    // Генерация билета
+    function generateTicket() {
+      const eventType = document.getElementById('event-type').value;
+      const eventName = document.getElementById('event-name').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const city = document.getElementById('city').value;
+      const fullName = document.getElementById('full-name').value;
+      const row = document.getElementById('row').value;
+      const seat = document.getElementById('seat').value;
+      const price = document.getElementById('price').value;
 
-            {!ticketGenerated && (
-              <>
-                <div className="form-container">
-                  <div className="form-field">
-                    <label>Тип мероприятия</label>
-                    <select
-                      value={eventType}
-                      onChange={(e) => updateEventList(e.target.value)}
-                    >
-                      <option value="">Выберите тип</option>
-                      <option value="opera">Опера</option>
-                      <option value="theater">Театр</option>
-                      <option value="ballet">Балет</option>
-                      <option value="standup">Стендап</option>
-                      <option value="exhibition">Выставка</option>
-                    </select>
-                  </div>
-                  <div className="form-field">
-                    <label>Выберите название мероприятия</label>
-                    <select
-                      value={eventName}
-                      onChange={(e) => setEventName(e.target.value)}
-                    >
-                      <option value="">Выберите мероприятие</option>
-                      {eventType && events[eventType]?.map(event => (
-                        <option key={event.name} value={event.name}>{event.name}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="form-field">
-                    <label>Дата</label>
-                    <input
-                      type="date"
-                      value={date}
-                      onChange={(e) => setDate(e.target.value)}
-                    />
-                  </div>
-                  <div className="form-field">
-                    <label>Время</label>
-                    <input
-                      type="time"
-                      value={time}
-                      onChange={(e) => setTime(e.target.value)}
-                    />
-                  </div>
-                  <div className="form-field">
-                    <label>Город</label>
-                    <input
-                      type="text"
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                      placeholder="Город"
-                    />
-                  </div>
-                  <div className="form-field">
-                    <label>ФИО</label>
-                    <input
-                      type="text"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      placeholder="ФИО"
-                    />
-                  </div>
-                  <div className="form-field">
-                    <label>Ряд</label>
-                    <select
-                      value={row}
-                      onChange={(e) => setRow(e.target.value)}
-                    >
-                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
-                        <option key={n} value={n}>{n}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="form-field">
-                    <label>Место</label>
-                    <select
-                      value={seat}
-                      onChange={(e) => setSeat(e.target.value)}
-                    >
-                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
-                        <option key={n} value={n}>{n}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="form-field">
-                    <label>Стоимость</label>
-                    <input
-                      type="text"
-                      value={price}
-                      onChange={(e) => setPrice(e.target.value)}
-                      placeholder="Стоимость"
-                    />
-                  </div>
-                  <button
-                    className="btn btn-primary"
-                    onClick={generateTicket}
-                  >
-                    Сгенерировать
-                  </button>
-                </div>
+      if (!eventType || !eventName || !date || !time || !city || !fullName || !row || !seat || !price) {
+        alert('Пожалуйста, заполните все поля!');
+        return;
+      }
 
-                <div className="privacy-section">
-                  <h3>Политика конфиденциальности</h3>
-                  <p>
-                    Настоящие фейковые билеты созданы исключительно в демонстрационных целях. Мы не собираем,
-                    не храним и не передаем персональные данные, введенные в форму, включая имя, город и другие
-                    сведения. Все данные остаются на вашем устройстве и используются только для генерации билета.
-                    Мы не несем ответственности за использование сгенерированных билетов в реальных мероприятиях,
-                    так как они являются фейковыми и не имеют юридической силы. Используйте их на свой страх и риск.
-                  </p>
-                </div>
-              </>
-            )}
+      selectedEvent = events[eventType].find(e => e.name === eventName);
 
-            {ticketGenerated && (
-              <>
-                <div className="ticket-container" ref={ticketRef}>
-                  <div className="ticket-header">
-                    <h3 className="logo logo-dark">KARABAS</h3>
-                    <p>
-                      ЭЛЕКТРОННЫЙ БИЛЕТ<br />E-ticket #1745515021
-                    </p>
-                  </div>
-                  <div className="age-restriction">18+</div>
-                  <p className="ticket-title">{eventName}</p>
-                  <div className="ticket-qr" ref={qrCodeRef}></div>
-                  <p>{date.split('-').reverse().join('.')}</p>
-                  <p>{time}</p>
-                  <div className="ticket-image" style={{ backgroundImage: `url(${selectedEvent?.image})` }}></div>
-                  <div className="ticket-info">
-                    <div>
-                      <p><strong>ГОРОД</strong><br />{city}</p>
-                      <p><strong>РЯД, МЕСТО</strong><br />{row} ряд {seat} место</p>
-                    </div>
-                    <div>
-                      <p><strong>ФИО</strong><br />{fullName}</p>
-                      <p><strong>НОМЕР ЗАКАЗА #</strong><br />1745515021</p>
-                      <p><strong>СТОИМОСТЬ</strong><br />{price} Р</p>
-                    </div>
-                  </div>
-                  <div className="ticket-barcode"></div>
-                  <div className="ticket-rules">
-                    <h4>ПРАВИЛА ИСПОЛЬЗОВАНИЯ И ВОЗВРАТА БИЛЕТА</h4>
-                    <p>
-                      1. Настоящий электронный билет является равным по консульству мероприятий.<br />
-                      2. Указанный идентификатор (штрих-код), содержащий в себе информацию о владельце мероприятия.<br />
-                      3. В случае возникновения каких-либо проблем, таких как качество изображения, физическое повреждение.<br />
-                      4. Пиротехника запрещена на мероприятии в случае отсутствия технических специалистов.<br />
-                      5. Стоимость настоящего электронного билета может быть возвращена по первому требованию.<br />
-                      6. С условием обмена вы можете ознакомиться на нашем сайте.
-                    </p>
-                  </div>
-                </div>
+      document.getElementById('ticket-event-name').textContent = eventName;
+      document.getElementById('ticket-date').textContent = date.split('-').reverse().join('.');
+      document.getElementById('ticket-time').textContent = time;
+      document.getElementById('ticket-city').textContent = city;
+      document.getElementById('ticket-row-seat').textContent = `${row} ряд ${seat} место`;
+      document.getElementById('ticket-full-name').textContent = fullName;
+      document.getElementById('ticket-price').textContent = `${price} Р`;
 
-                <div className="form-container">
-                  <button
-                    className="btn btn-primary"
-                    onClick={downloadPNG}
-                  >
-                    Скачать как PNG
-                  </button>
-                  <button
-                    className="btn btn-primary"
-                    onClick={downloadPDF}
-                  >
-                    Скачать как PDF
-                  </button>
-                  <button
-                    className="btn"
-                    onClick={goBack}
-                  >
-                    Назад
-                  </button>
-                  <button
-                    className="btn btn-secondary"
-                    onClick={goToEventSite}
-                  >
-                    Перейти на сайт мероприятия
-                  </button>
-                </div>
+      generateQRCode(`FAKE TICKET ${fullName}`);
 
-                <div className="other-events">
-                  <h3>Другие мероприятия</h3>
-                  <a href="event-lebedinoe.html">
-                    <img src="lebedinoe_ozero.png" alt="Лебединое озеро" />
-                    <div>
-                      <h4>Лебединое озеро</h4>
-                      <p>30 Апреля 2025, 19:00</p>
-                    </div>
-                  </a>
-                  <a href="event-traviata.html">
-                    <img src="traviata.png" alt="Травиата" />
-                    <div>
-                      <h4>Травиата</h4>
-                      <p>5 Мая 2025, 18:30</p>
-                    </div>
-                  </a>
-                  <a href="event-zhenskiy.html">
-                    <img src="zhenskiy_stendap.png" alt="Женский стендап" />
-                    <div>
-                      <h4>Женский стендап</h4>
-                      <p>10 Мая 2025, 20:00</p>
-                    </div>
-                  </a>
-                </div>
-              </>
-            )}
+      document.getElementById('form-section').style.display = 'none';
+      document.getElementById('privacy-section').style.display = 'none';
+      document.getElementById('ticket-section').style.display = 'block';
+      document.getElementById('ticket-buttons').style.display = 'block';
+      document.getElementById('other-events').style.display = 'block';
+    }
 
-            <footer className="footer">
-              <div className="container">
-                <p>
-                  Все права защищены ООН КАРАБАС, лицензионное соглашение на 2025 год.{' '}
-                  <a href="license.html" target="_blank">Подробнее о лицензии</a>
-                </p>
-              </div>
-            </footer>
-          </div>
-        </div>
-      );
-    };
+    // Возврат к форме
+    function goBack() {
+      document.getElementById('form-section').style.display = 'block';
+      document.getElementById('privacy-section').style.display = 'block';
+      document.getElementById('ticket-section').style.display = 'none';
+      document.getElementById('ticket-buttons').style.display = 'none';
+      document.getElementById('other-events').style.display = 'none';
+      selectedEvent = null;
+    }
 
-    ReactDOM.render(<App />, document.getElementById('root'));
+    // Переход на сайт мероприятия
+    function goToEventSite() {
+      if (selectedEvent && selectedEvent.site) {
+        window.open(selectedEvent.site, '_blank');
+      } else {
+        alert('Сайт для этого мероприятия недоступен.');
+      }
+    }
+
+    // Скачивание PNG
+    function downloadPNG() {
+      const ticket = document.getElementById('ticket-section');
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = ticket.offsetWidth;
+      canvas.height = ticket.offsetHeight;
+
+      // Фон билета
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Рендеринг содержимого
+      ctx.fillStyle = '#020126';
+      ctx.font = '36px sans-serif';
+      ctx.fillText(document.getElementById('ticket-event-name').textContent, 20, 50);
+      ctx.font = '14px sans-serif';
+      ctx.fillText(document.getElementById('ticket-date').textContent, 20, 100);
+      ctx.fillText(document.getElementById('ticket-time').textContent, 20, 120);
+      ctx.fillText(`ГОРОД: ${document.getElementById('ticket-city').textContent}`, 20, 160);
+      ctx.fillText(`РЯД, МЕСТО: ${document.getElementById('ticket-row-seat').textContent}`, 20, 180);
+      ctx.fillText(`ФИО: ${document.getElementById('ticket-full-name').textContent}`, 20, 200);
+      ctx.fillText(`СТОИМОСТЬ: ${document.getElementById('ticket-price').textContent}`, 20, 220);
+
+      // QR-код
+      const qrCanvas = document.getElementById('qr-code');
+      ctx.drawImage(qrCanvas, (canvas.width - 80) / 2, 240);
+
+      // Загрузка
+      const link = document.createElement('a');
+      link.download = 'fake-ticket.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // Скачивание PDF
+    function downloadPDF() {
+      const ticket = document.getElementById('ticket-section');
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = ticket.offsetWidth;
+      canvas.height = ticket.offsetHeight;
+
+      // Фон билета
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Рендеринг содержимого
+      ctx.fillStyle = '#020126';
+      ctx.font = '36px sans-serif';
+      ctx.fillText(document.getElementById('ticket-event-name').textContent, 20, 50);
+      ctx.font = '14px sans-serif';
+      ctx.fillText(document.getElementById('ticket-date').textContent, 20, 100);
+      ctx.fillText(document.getElementById('ticket-time').textContent, 20, 120);
+      ctx.fillText(`ГОРОД: ${document.getElementById('ticket-city').textContent}`, 20, 160);
+      ctx.fillText(`РЯД, МЕСТО: ${document.getElementById('ticket-row-seat').textContent}`, 20, 180);
+      ctx.fillText(`ФИО: ${document.getElementById('ticket-full-name').textContent}`, 20, 200);
+      ctx.fillText(`СТОИМОСТЬ: ${document.getElementById('ticket-price').textContent}`, 20, 220);
+
+      // QR-код
+      const qrCanvas = document.getElementById('qr-code');
+      ctx.drawImage(qrCanvas, (canvas.width - 80) / 2, 240);
+
+      // Генерация PDF
+      const imgData = canvas.toDataURL('image/png');
+      const pdfWindow = window.open('');
+      pdfWindow.document.write(`
+        <html>
+          <body>
+            <img src="${imgData}" style="width: 100%;">
+          </body>
+        </html>
+      `);
+      pdfWindow.document.close();
+      pdfWindow.print();
+    }
   </script>
 </body>
 </html>
