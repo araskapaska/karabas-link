@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
   <title>KARABAS</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎫</text></svg>">
   <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7.22.10/babel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1514528593820-2d192a2b6952?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
       min-height: 100vh;
     }
     .ticket-image {
@@ -368,21 +368,21 @@
 
               <div className="bg-gray-800 bg-opacity-90 p-5 rounded-lg w-full max-w-[500px] mb-5 shadow-lg">
                 <h3 className="mb-2 text-2xl text-red-500">Другие мероприятия</h3>
-                <a href="event-lebedinoe.html" className="flex items-center bg-gray-700 p-2 rounded-lg mb-2 hover:scale-102 transition-transform">
+                <a href="event-lebedinoe.html" className="flex items-center bg-gray-700 p-2 rounded-lg mb-2 hover:scale-[1.02] transition-transform">
                   <img src="lebedinoe_ozero.png" alt="Лебединое озеро" className="w-[100px] h-[60px] object-cover rounded mr-2" />
                   <div>
                     <h4 className="text-base text-white">Лебединое озеро</h4>
                     <p className="text-xs text-gray-400">30 Апреля 2025, 19:00</p>
                   </div>
                 </a>
-                <a href="event-traviata.html" className="flex items-center bg-gray-700 p-2 rounded-lg mb-2 hover:scale-102 transition-transform">
+                <a href="event-traviata.html" className="flex items-center bg-gray-700 p-2 rounded-lg mb-2 hover:scale-[1.02] transition-transform">
                   <img src="traviata.png" alt="Травиата" className="w-[100px] h-[60px] object-cover rounded mr-2" />
                   <div>
                     <h4 className="text-base text-white">Травиата</h4>
                     <p className="text-xs text-gray-400">5 Мая 2025, 18:30</p>
                   </div>
                 </a>
-                <a href="event-zhenskiy.html" className="flex items-center bg-gray-700 p-2 rounded-lg mb-2 hover:scale-102 transition-transform">
+                <a href="event-zhenskiy.html" className="flex items-center bg-gray-700 p-2 rounded-lg mb-2 hover:scale-[1.02] transition-transform">
                   <img src="zhenskiy_stendap.png" alt="Женский стендап" className="w-[100px] h-[60px] object-cover rounded mr-2" />
                   <div>
                     <h4 className="text-base text-white">Женский стендап</h4>
