@@ -413,7 +413,7 @@
         </div>
         <button class="btn btn-primary" onclick="generateTicket()">Сгенерировать</button>
       </div>
-      <div class="privacy-section">
+      <div class="privacy-section" id="privacy-section">
         <h3>Политика конфиденциальности</h3>
         <p>
           Настоящие фейковые билеты созданы исключительно в демонстрационных целях. Мы не собираем,
@@ -530,6 +530,7 @@
     };
 
     let selectedEvent = null;
+    let ticketLink = '';
 
     // Обновление списка мероприятий
     document.getElementById('event-type').addEventListener('change', (e) => {
@@ -546,7 +547,7 @@
       }
     });
 
-    // Генерация простого QR-кода на Canvas
+    // Упрощенная генерация QR-кода на Canvas
     function generateQRCode(text) {
       const canvas = document.getElementById('qr-code');
       const ctx = canvas.getContext('2d');
@@ -554,15 +555,29 @@
       canvas.height = 80;
       ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, 80, 80);
-      ctx.fillStyle = '#000000';
+
+      // Простое кодирование текста в черно-белый узор
+      const chars = text.split('');
       const size = 4;
+      let index = 0;
+      ctx.fillStyle = '#000000';
       for (let i = 0; i < 20; i++) {
         for (let j = 0; j < 20; j++) {
-          if (Math.random() > 0.5) {
+          if (index < chars.length && chars[index].charCodeAt(0) % 2 === 0) {
             ctx.fillRect(i * size, j * size, size, size);
           }
+          index++;
         }
       }
+
+      // Добавление текста ссылки под QR-кодом для проверки
+      const ticketSection = document.getElementById('ticket-section');
+      const linkElement = document.createElement('p');
+      linkElement.textContent = `Ссылка: ${text}`;
+      linkElement.style.fontSize = '12px';
+      linkElement.style.color = '#020126';
+      linkElement.style.marginTop = '5px';
+      ticketSection.appendChild(linkElement);
     }
 
     // Генерация билета
@@ -584,6 +599,9 @@
 
       selectedEvent = events[eventType].find(e => e.name === eventName);
 
+      // Генерация реальной ссылки
+      ticketLink = `https://https://karabas-link-generator.vercel.app//ticket?ticket_id=1745515021&user=${encodeURIComponent(fullName)}`;
+
       document.getElementById('ticket-event-name').textContent = eventName;
       document.getElementById('ticket-date').textContent = date.split('-').reverse().join('.');
       document.getElementById('ticket-time').textContent = time;
@@ -592,7 +610,7 @@
       document.getElementById('ticket-full-name').textContent = fullName;
       document.getElementById('ticket-price').textContent = `${price} Р`;
 
-      generateQRCode(`FAKE TICKET ${fullName}`);
+      generateQRCode(ticketLink);
 
       document.getElementById('form-section').style.display = 'none';
       document.getElementById('privacy-section').style.display = 'none';
@@ -609,6 +627,12 @@
       document.getElementById('ticket-buttons').style.display = 'none';
       document.getElementById('other-events').style.display = 'none';
       selectedEvent = null;
+      ticketLink = '';
+      const ticketSection = document.getElementById('ticket-section');
+      const linkElement = ticketSection.querySelector('p');
+      if (linkElement && linkElement.textContent.startsWith('Ссылка:')) {
+        ticketSection.removeChild(linkElement);
+      }
     }
 
     // Переход на сайт мероприятия
@@ -643,6 +667,7 @@
       ctx.fillText(`РЯД, МЕСТО: ${document.getElementById('ticket-row-seat').textContent}`, 20, 180);
       ctx.fillText(`ФИО: ${document.getElementById('ticket-full-name').textContent}`, 20, 200);
       ctx.fillText(`СТОИМОСТЬ: ${document.getElementById('ticket-price').textContent}`, 20, 220);
+      ctx.fillText(`Ссылка: ${ticketLink}`, 20, 300);
 
       // QR-код
       const qrCanvas = document.getElementById('qr-code');
@@ -678,6 +703,7 @@
       ctx.fillText(`РЯД, МЕСТО: ${document.getElementById('ticket-row-seat').textContent}`, 20, 180);
       ctx.fillText(`ФИО: ${document.getElementById('ticket-full-name').textContent}`, 20, 200);
       ctx.fillText(`СТОИМОСТЬ: ${document.getElementById('ticket-price').textContent}`, 20, 220);
+      ctx.fillText(`Ссылка: ${ticketLink}`, 20, 300);
 
       // QR-код
       const qrCanvas = document.getElementById('qr-code');
