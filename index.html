@@ -4,22 +4,665 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
   <title>KARABAS</title>
+  <!-- Favicon для устранения ошибки 404 -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎫</text></svg>">
+  <!-- React и зависимости -->
   <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7.22.10/babel.min.js"></script>
+  <!-- Библиотеки для QR-кода, PNG и PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <link href="https://unpkg.com/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
   <style>
+    @charset "UTF-8";
+
+    /* Стили из style2.css с заменой шрифта Roboto на sans-serif */
+    .logo-def, article, aside, details, figcaption, figure, footer, header, hgroup, label, menu, nav, section {
+      display: block;
+    }
+    li, ol, ul {
+      list-style: none;
+    }
+    *, :focus, a:active, a:focus, a:hover {
+      outline: 0;
+    }
+    .links-def, .old-info, .old-info-2 {
+      -webkit-box-align: center;
+      align-items: center;
+    }
+    a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font: inherit;
+      vertical-align: baseline;
+    }
+    blockquote, q {
+      quotes: none;
+    }
+    blockquote:after, blockquote:before, q:after, q:before {
+      content: "";
+      content: none;
+    }
+    input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration, input[type=search]::-webkit-search-results-button, input[type=search]::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+    audio, canvas, video {
+      display: inline-block;
+      max-width: 100%;
+    }
+    audio:not([controls]) {
+      display: none;
+      height: 0;
+    }
+    [hidden] {
+      display: none;
+    }
+    html {
+      font-size: 100%;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      background: #020126;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    img {
+      border: 0;
+      -ms-interpolation-mode: bicubic;
+      vertical-align: middle;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    figure, form {
+      margin: 0;
+    }
+    legend {
+      border: 0;
+      padding: 0;
+      white-space: normal;
+    }
+    button, input, select, textarea {
+      font-size: 100%;
+      margin: 0;
+      vertical-align: baseline;
+    }
+    button, input {
+      line-height: normal;
+    }
+    button, select {
+      text-transform: none;
+    }
+    button, html input[type=button], input[type=reset], input[type=submit] {
+      -webkit-appearance: button;
+      cursor: pointer;
+    }
+    button[disabled], html input[disabled] {
+      cursor: default;
+    }
+    input[type=checkbox], input[type=radio] {
+      box-sizing: border-box;
+      padding: 0;
+    }
+    input[type=search] {
+      -webkit-appearance: textfield;
+      box-sizing: content-box;
+    }
+    input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+      -webkit-appearance: none;
+    }
+    button::-moz-focus-inner, input::-moz-focus-inner {
+      border: 0;
+      padding: 0;
+    }
+    textarea {
+      overflow: auto;
+      vertical-align: top;
+      resize: vertical;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+    button, html, input, select, textarea {
+      color: #222;
+    }
+    ::-moz-selection {
+      background: #b3d4fc;
+      text-shadow: none;
+    }
+    ::selection {
+      background: #b3d4fc;
+      text-shadow: none;
+    }
+    fieldset {
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+    .chromeframe {
+      margin: 0.2em 0;
+      background: #ccc;
+      color: #000;
+      padding: 0.2em 0;
+    }
+    h1, h2, h3, h4, h5, h6, p {
+      padding: 0;
+      margin: 0;
+    }
+    a {
+      text-decoration: none;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    .logo-def {
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 64px;
+      color: #F2F2F2;
+      width: 316px;
+      height: 77px;
+    }
+    .logo-def_2 {
+      color: #020126;
+    }
+    .links-def {
+      display: flex;
+      align-items: center;
+    }
+    .links-def__el {
+      margin-right: 40px;
+    }
+    .links-def__el:last-child {
+      margin-right: 0 !important;
+    }
+    .links-def__el.active .links-def__link {
+      font-size: 40px;
+      color: #EE1C25;
+    }
+    .link-arr, .links-def__link {
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 24px;
+    }
+    .links-def__link {
+      color: #F2F2F2;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+    .links-def__link:hover {
+      color: #EE1C25;
+    }
+    .title-def {
+      font-family: sans-serif;
+      font-weight: 300;
+      color: #976FBF;
+    }
+    .title-def_sec {
+      font-size: 64px;
+    }
+    .title-def_sec2 {
+      font-size: 48px;
+      text-shadow: #fff -2px 0;
+    }
+    .title-def_sec3 {
+      color: #F2F2F2;
+      font-size: 48px;
+    }
+    .title-def_main {
+      font-size: 80px;
+      color: #F2F2F2;
+    }
+    .title-def_small {
+      font-size: 32px;
+      color: #F2F2F2;
+    }
+    .title-def_page {
+      font-size: 96px;
+    }
+    .title-def_med {
+      font-size: 64px;
+      color: #976FBF;
+    }
+    .title-def_red {
+      color: #EE1C25;
+    }
+    .link-arr {
+      color: #F2F2F2;
+      position: relative;
+      border-bottom: 4px solid #fff;
+      padding-right: 40px;
+      margin-right: 12px;
+      padding-bottom: 2px;
+    }
+    .old-info, .title-small {
+      font-size: 32px;
+      font-family: sans-serif;
+      font-weight: 300;
+      color: #F2F2F2;
+    }
+    .link-arr__arr {
+      position: absolute;
+      bottom: -24px;
+      right: -6px;
+    }
+    .link-arr__arr2 {
+      position: absolute;
+      top: -24px;
+      left: -6px;
+    }
+    .link-arr_2 {
+      border-top: 4px solid #fff;
+      border-bottom: 0;
+      margin-right: 0;
+      margin-left: 12px;
+      padding: 9px 0 0 40px;
+    }
+    .title-small {
+      line-height: 1;
+    }
+    .old-info {
+      border: 1px solid #F2F2F2;
+      border-radius: 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5px 2px;
+    }
+    .btn-def, .old-info-2, .old-info-3 {
+      display: inline-flex;
+    }
+    .old-info-2 {
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 24px;
+      color: #F2F2F2;
+      border: 1px solid #F2F2F2;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5px 4px;
+    }
+    .btn-def {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 32px;
+      cursor: pointer;
+      color: #F2F2F2;
+      border: 4px solid #EE1C25;
+      padding: 8px 9px;
+      transition: 0.3s;
+    }
+    .btn-def_small, .wrap-article {
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .btn-def_2 {
+      background: #EE1C25;
+      color: #F2F2F2;
+    }
+    .btn-def_3 {
+      font-size: 24px;
+    }
+    .btn-def.disabled {
+      border-color: #8B8B8B;
+      background-color: transparent;
+      cursor: default;
+    }
+    .btn-def:hover:not(.disabled) {
+      background: #EE1C25;
+      border-color: #EE1C25;
+      color: #F2F2F2;
+    }
+    .btn-def_border, .btn-def_border:hover {
+      border-color: #976FBF;
+      color: #F2F2F2;
+    }
+    .btn-def_border:hover {
+      background: #976FBF;
+    }
+    .wrap-article {
+      font-family: sans-serif;
+      color: #F2F2F2;
+      line-height: 1.5;
+    }
+    .wrap-article h2 {
+      font-family: sans-serif;
+      font-weight: 400;
+      font-size: 32px;
+      color: #020126;
+      margin-bottom: 16px;
+    }
+    .wrap-article p {
+      min-height: 8px;
+    }
+    .wrap-article p:last-child {
+      margin-bottom: 0 !important;
+    }
+    .wrap-article strong {
+      color: #976FBF;
+    }
+    .old-info-3 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      padding: 9px 2.5px;
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 48px;
+      color: #020126;
+      border: 1px solid #976FBF;
+      border-radius: 10px;
+    }
+    .inp-def {
+      display: block;
+      background: transparent;
+      border: 4px solid #F2F2F2;
+      width: 100%;
+      height: 96px;
+      transition: 0.3s;
+      padding: 0 69px;
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 32px;
+      color: #F2F2F2;
+    }
+    .inp-def::-webkit-input-placeholder {
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 32px;
+      color: #F2F2F2;
+    }
+    .inp-def::-moz-placeholder {
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 32px;
+      color: #F2F2F2;
+    }
+    .inp-def:-ms-input-placeholder {
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 32px;
+      color: #F2F2F2;
+    }
+    .inp-def::-ms-input-placeholder {
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 32px;
+      color: #F2F2F2;
+    }
+    .inp-def_2 {
+      border-width: 1px;
+      height: 72px;
+      font-size: 40px;
+      font-weight: 400;
+    }
+    .inp-def_2::-webkit-input-placeholder {
+      font-size: 40px;
+      font-weight: 400;
+    }
+    .inp-def_2::-moz-placeholder {
+      font-size: 40px;
+      font-weight: 400;
+    }
+    .inp-def_2:-ms-input-placeholder {
+      font-size: 40px;
+      font-weight: 400;
+    }
+    .inp-def_2::-ms-input-placeholder {
+      font-size: 40px;
+      font-weight: 400;
+    }
+    .form-el {
+      position: relative;
+    }
+    .form-el.error::after, .form-el__dec {
+      position: absolute;
+      font-weight: 400;
+      font-family: sans-serif;
+    }
+    .form-el__dec {
+      top: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      right: 80px;
+      font-size: 40px;
+      color: #F2F2F2;
+    }
+    .form-el.error::after {
+      content: "Поле обязательно для заполнения!";
+      bottom: 0;
+      right: 12px;
+      font-size: 16px;
+      text-align: right;
+      color: #EE1C25;
+      line-height: 1.5;
+      pointer-events: none;
+    }
+    .form-el.error .inp-def {
+      border-color: #EE1C25;
+    }
+    .form-el.error .inp-def::-webkit-input-placeholder {
+      color: #EE1C25;
+    }
+    .form-el.error .inp-def::-moz-placeholder {
+      color: #EE1C25;
+    }
+    .form-el.error .inp-def:-ms-input-placeholder {
+      color: #EE1C25;
+    }
+    .form-el.error .inp-def::-ms-input-placeholder {
+      color: #EE1C25;
+    }
+    .select-el {
+      position: relative;
+      user-select: none;
+      background: #020126;
+    }
+    .select-el.active {
+      z-index: 100;
+    }
+    .select-el__top {
+      display: flex;
+      align-items: center;
+      font-family: sans-serif;
+      font-weight: 400;
+      font-size: 40px;
+      color: #F2F2F2;
+      padding-left: 69px;
+      height: 72px;
+      cursor: pointer;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding-right: 20px;
+      border: 1px solid #F2F2F2;
+    }
+    .select-el__dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      border: 1px solid #F2F2F2;
+      border-top: 0;
+      width: 100%;
+      padding: 17px 0;
+      z-index: 10;
+      background: #020126;
+    }
+    .select-el__dropdown-el {
+      font-family: sans-serif;
+      font-weight: 400;
+      font-size: 32px;
+      color: #F2F2F2;
+      cursor: pointer;
+      padding-left: 69px;
+      line-height: 1.25;
+      transition: 0.3s;
+    }
+    .select-el__dropdown-el.active, .select-el__dropdown-el:hover {
+      color: #976FBF;
+    }
+    .select-el.active .select-el__top {
+      border-bottom-color: transparent;
+      position: relative;
+    }
+    .select-el.active .select-el__top::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 45px;
+      right: 45px;
+      height: 1px;
+      background-color: #F2F2F2;
+    }
+    .electronic-ticket__wrap {
+      padding: 21px 0 145px;
+    }
+    .electronic-ticket__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .electronic-ticket__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 85px;
+    }
+    .electronic-ticket__left {
+      width: 496px;
+      flex: none;
+      margin-right: 80px;
+    }
+    .electronic-ticket__right {
+      flex: 1;
+      margin-top: 12px;
+    }
+    .electronic-ticket__old {
+      position: absolute;
+      top: 4px;
+      right: 0;
+    }
+    .electronic-ticket__img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-bottom: 35px;
+    }
+    .electronic-ticket__code {
+      width: 100%;
+      height: auto;
+    }
+    .electronic-ticket__title {
+      color: #020126;
+      margin-bottom: 10px;
+      padding-right: 100px;
+    }
+    .electronic-ticket__title2 {
+      color: #020126;
+    }
+    .electronic-ticket__text {
+      color: #020126;
+      margin-top: 35px;
+      margin-bottom: 60px;
+    }
+    .electronic-ticket__textart {
+      border: 1px solid #020126;
+      margin-top: 55px;
+      padding: 13px 83px 39px;
+      color: #020126;
+    }
+    .ticket-info-el {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .ticket-info-el__info, .ticket-info-el__title {
+      display: block;
+      font-family: sans-serif;
+      color: #020126;
+      font-weight: 400;
+    }
+    .ticket-info-el__title {
+      font-size: 32px;
+    }
+    .ticket-info-el__info {
+      font-size: 16px;
+    }
+    .ticket-info-el__val {
+      font-family: sans-serif;
+      font-weight: 400;
+      font-size: 32px;
+      color: #020126;
+    }
+    .sec-footer {
+      margin-top: 56px;
+      background: #000;
+    }
+    .sec-footer__wrap {
+      padding: 89px 0 59px;
+    }
+    .sec-footer__text {
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 32px;
+      color: #F2F2F2;
+      margin-bottom: 5px;
+    }
+    .sec-footer__bottom {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 84px;
+    }
+    .sec-footer__bottom .sec-footer__text {
+      font-size: 24px;
+    }
+    .container-def {
+      padding: 0 15px;
+      margin: 0 auto;
+      max-width: 1263px;
+      width: 100%;
+      z-index: 10;
+      position: relative;
+    }
+
+    /* Дополнительные стили для приложения */
     body {
+      font-family: sans-serif;
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+      color: #F2F2F2;
+      margin: 0;
+      padding: 20px;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .wrapper-def {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .ticket-image {
       background-size: cover;
       background-position: center;
+      width: 100%;
+      height: 200px;
+      margin-bottom: 8px;
     }
     .barcode {
       background: repeating-linear-gradient(
@@ -29,10 +672,182 @@
         #fff 2px,
         #fff 4px
       );
+      width: 100%;
+      height: 40px;
+      margin: 4px 0;
+    }
+    .form-container {
+      background: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    .form-el {
+      margin-bottom: 16px;
+    }
+    .form-el label {
+      display: block;
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: #F2F2F2;
+      margin-bottom: 4px;
+    }
+    .form-el select, .form-el input {
+      width: 100%;
+      background: #020126;
+      border: 1px solid #F2F2F2;
+      color: #F2F2F2;
+      font-family: sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      padding: 8px;
+      border-radius: 4px;
+    }
+    .btn-container {
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .btn-container .btn-def {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+    .other-events {
+      background: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    .other-events a {
+      display: flex;
+      align-items: center;
+      background: #020126;
+      padding: 8px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      transition: transform 0.2s;
+    }
+    .other-events a:hover {
+      transform: scale(1.02);
+    }
+    .other-events img {
+      width: 100px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 8px;
+    }
+    .other-events h4 {
+      font-family: sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: #F2F2F2;
+    }
+    .other-events p {
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 12px;
+      color: #8B8B8B;
+    }
+    .ticket-container {
+      background: #FFFFFF;
+      color: #020126;
+      padding: 20px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+    .ticket-container .qr-code {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      margin: 8px auto;
+      text-align: center;
+    }
+    .ticket-container .age-restriction {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-family: sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      border: 1px solid #020126;
+      padding: 2px 4px;
+      border-radius: 4px;
+      background: #FFFFFF;
+    }
+    .ticket-info {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      margin-bottom: 8px;
+    }
+    .ticket-info div {
+      width: 100%;
+    }
+    .ticket-info p {
+      font-family: sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: #020126;
+      margin: 4px 0;
+    }
+    .ticket-info p strong {
+      font-weight: 700;
+    }
+    .ticket-rules {
+      border: 1px solid #020126;
+      padding: 8px;
+      font-family: sans-serif;
+      font-weight: 400;
+      font-size: 10px;
+      color: #020126;
+    }
+    .ticket-rules h4 {
+      font-weight: 700;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    @media (min-width: 768px) {
+      .ticket-info {
+        flex-direction: row;
+      }
+      .ticket-info div {
+        width: 48%;
+      }
     }
     @media (max-width: 600px) {
       .ticket-image {
         height: 150px;
+      }
+      .logo-def {
+        font-size: 18px;
+        width: 89px;
+        height: 22px;
+      }
+      .form-container, .other-events, .ticket-container {
+        max-width: 100%;
+        padding: 10px;
+      }
+      .btn-def {
+        font-size: 16px;
+        padding: 6px 8px;
+      }
+      .ticket-container .age-restriction {
+        top: 10px;
+        right: 10px;
+        font-size: 10px;
       }
     }
   </style>
@@ -160,247 +975,233 @@
       };
 
       return (
-        <div className="flex flex-col items-center min-h-screen text-white font-sans">
-          <h1 className="text-5xl mb-2 text-red-500 drop-shadow-md md:text-4xl">KARABAS</h1>
+        <div className="wrapper-def">
+          <div className="container-def">
+            <h1 className="logo-def title-def_red">KARABAS</h1>
 
-          {!ticketGenerated && (
-            <>
-              <div className="bg-gray-800 bg-opacity-90 p-5 rounded-lg w-full max-w-md mb-5 shadow-lg">
-                <div className="mb-4">
-                  <label className="block mb-1 text-sm">Тип мероприятия</label>
-                  <select
-                    value={eventType}
-                    onChange={(e) => updateEventList(e.target.value)}
-                    className="w-full p-2 bg-gray-700 border border-white text-white rounded text-sm"
+            {!ticketGenerated && (
+              <>
+                <div className="form-container">
+                  <div className="form-el">
+                    <label>Тип мероприятия</label>
+                    <select
+                      value={eventType}
+                      onChange={(e) => updateEventList(e.target.value)}
+                    >
+                      <option value="">Выберите тип</option>
+                      <option value="opera">Опера</option>
+                      <option value="theater">Театр</option>
+                      <option value="ballet">Балет</option>
+                      <option value="standup">Стендап</option>
+                      <option value="exhibition">Выставка</option>
+                    </select>
+                  </div>
+                  <div className="form-el">
+                    <label>Выберите название мероприятия</label>
+                    <select
+                      value={eventName}
+                      onChange={(e) => setEventName(e.target.value)}
+                    >
+                      <option value="">Выберите мероприятие</option>
+                      {eventType && events[eventType]?.map(event => (
+                        <option key={event.name} value={event.name}>{event.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="form-el">
+                    <label>Дата</label>
+                    <input
+                      type="date"
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-el">
+                    <label>Время</label>
+                    <input
+                      type="time"
+                      value={time}
+                      onChange={(e) => setTime(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-el">
+                    <label>Город</label>
+                    <input
+                      type="text"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                      placeholder="Город"
+                    />
+                  </div>
+                  <div className="form-el">
+                    <label>ФИО</label>
+                    <input
+                      type="text"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      placeholder="ФИО"
+                    />
+                  </div>
+                  <div className="form-el">
+                    <label>Ряд</label>
+                    <select
+                      value={row}
+                      onChange={(e) => setRow(e.target.value)}
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
+                        <option key={n} value={n}>{n}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="form-el">
+                    <label>Место</label>
+                    <select
+                      value={seat}
+                      onChange={(e) => setSeat(e.target.value)}
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
+                        <option key={n} value={n}>{n}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="form-el">
+                    <label>Стоимость</label>
+                    <input
+                      type="text"
+                      value={price}
+                      onChange={(e) => setPrice(e.target.value)}
+                      placeholder="Стоимость"
+                    />
+                  </div>
+                  <button
+                    className="btn-def btn-def_2"
+                    onClick={generateTicket}
                   >
-                    <option value="">Выберите тип</option>
-                    <option value="opera">Опера</option>
-                    <option value="theater">Театр</option>
-                    <option value="ballet">Балет</option>
-                    <option value="standup">Стендап</option>
-                    <option value="exhibition">Выставка</option>
-                  </select>
+                    Сгенерировать
+                  </button>
                 </div>
-                <div className="mb-4">
-                  <label className="block mb-1 text-sm">Выберите название мероприятия</label>
-                  <select
-                    value={eventName}
-                    onChange={(e) => setEventName(e.target.value)}
-                    className="w-full p-2 bg-gray-700 border border-white text-white rounded text-sm"
-                  >
-                    <option value="">Выберите мероприятие</option>
-                    {eventType && events[eventType]?.map(event => (
-                      <option key={event.name} value={event.name}>{event.name}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="mb-4">
-                  <label className="block mb-1 text-sm">Дата</label>
-                  <input
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    className="w-full p-2 bg-gray-700 border border-white text-white rounded text-sm"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block mb-1 text-sm">Время</label>
-                  <input
-                    type="time"
-                    value={time}
-                    onChange={(e) => setTime(e.target.value)}
-                    className="w-full p-2 bg-gray-700 border border-white text-white rounded text-sm"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block mb-1 text-sm">Город</label>
-                  <input
-                    type="text"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    placeholder="Город"
-                    className="w-full p-2 bg-gray-700 border border-white text-white rounded text-sm"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block mb-1 text-sm">ФИО</label>
-                  <input
-                    type="text"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="ФИО"
-                    className="w-full p-2 bg-gray-700 border border-white text-white rounded text-sm"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block mb-1 text-sm">Ряд</label>
-                  <select
-                    value={row}
-                    onChange={(e) => setRow(e.target.value)}
-                    className="w-full p-2 bg-gray-700 border border-white text-white rounded text-sm"
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
-                      <option key={n} value={n}>{n}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="mb-4">
-                  <label className="block mb-1 text-sm">Место</label>
-                  <select
-                    value={seat}
-                    onChange={(e) => setSeat(e.target.value)}
-                    className="w-full p-2 bg-gray-700 border border-white text-white rounded text-sm"
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
-                      <option key={n} value={n}>{n}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="mb-4">
-                  <label className="block mb-1 text-sm">Стоимость</label>
-                  <input
-                    type="text"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    placeholder="Стоимость"
-                    className="w-full p-2 bg-gray-700 border border-white text-white rounded text-sm"
-                  />
-                </div>
-                <button
-                  onClick={generateTicket}
-                  className="w-full p-2 bg-red-600 text-white rounded text-base hover:bg-red-700"
-                >
-                  Сгенерировать
-                </button>
-              </div>
 
-              <div className="bg-gray-800 bg-opacity-90 p-4 rounded-lg w-full max-w-md mb-5 shadow-lg text-sm">
-                <h3 className="mb-2 text-lg">Политика конфиденциальности</h3>
-                <p>
-                  Настоящие фейковые билеты созданы исключительно в демонстрационных целях. Мы не собираем,
-                  не храним и не передаем персональные данные, введенные в форму, включая имя, город и другие
-                  сведения. Все данные остаются на вашем устройстве и используются только для генерации билета.
-                  Мы не несем ответственности за использование сгенерированных билетов в реальных мероприятиях,
-                  так как они являются фейковыми и не имеют юридической силы. Используйте их на свой страх и риск.
-                </p>
-              </div>
-            </>
-          )}
-
-          {ticketGenerated && (
-            <>
-              <div
-                ref={ticketRef}
-                className="bg-white text-black p-5 rounded-lg w-full max-w-[500px] mb-5 shadow-lg"
-              >
-                <div className="flex justify-between items-center mb-5">
-                  <h3 className="text-2xl font-bold text-gray-800">KARABAS</h3>
-                  <p className="text-xs text-black text-right">
-                    ЭЛЕКТРОННЫЙ БИЛЕТ<br />E-ticket #1745515021
-                  </p>
-                </div>
-                <div className="absolute top-5 right-5 text-xs font-bold border border-black px-1 rounded bg-white">
-                  18+
-                </div>
-                <p className="text-2xl font-bold text-gray-800 mb-2 text-center">{eventName}</p>
-                <div className="text-center my-2">
-                  <div ref={qrCodeRef} className="inline-block w-20 h-20"></div>
-                </div>
-                <p className="text-base text-black mb-2">{date.split('-').reverse().join('.')}</p>
-                <p className="text-base text-black mb-2">{time}</p>
-                <div className="w-full h-50 mb-2 ticket-image" style={{ backgroundImage: `url(${selectedEvent?.image})` }}></div>
-                <div className="flex justify-between mb-1 flex-col md:flex-row">
-                  <div className="w-full md:w-[48%]">
-                    <p className="text-sm text-black my-1"><strong>ГОРОД</strong><br />{city}</p>
-                    <p className="text-sm text-black my-1">
-                      <strong>РЯД, МЕСТО</strong><br />{row} ряд {seat} место
+                <div className="form-container">
+                  <h3 className="title-def_small">Политика конфиденциальности</h3>
+                  <div className="wrap-article">
+                    <p>
+                      Настоящие фейковые билеты созданы исключительно в демонстрационных целях. Мы не собираем,
+                      не храним и не передаем персональные данные, введенные в форму, включая имя, город и другие
+                      сведения. Все данные остаются на вашем устройстве и используются только для генерации билета.
+                      Мы не несем ответственности за использование сгенерированных билетов в реальных мероприятиях,
+                      так как они являются фейковыми и не имеют юридической силы. Используйте их на свой страх и риск.
                     </p>
                   </div>
-                  <div className="w-full md:w-[48%]">
-                    <p className="text-sm text-black my-1"><strong>ФИО</strong><br />{fullName}</p>
-                    <p className="text-sm text-black my-1"><strong>НОМЕР ЗАКАЗА #</strong><br />1745515021</p>
-                    <p className="text-sm text-black my-1"><strong>СТОИМОСТЬ</strong><br />{price} Р</p>
+                </div>
+              </>
+            )}
+
+            {ticketGenerated && (
+              <>
+                <div className="ticket-container" ref={ticketRef}>
+                  <div className="electronic-ticket__top">
+                    <h3 className="logo-def_2">KARABAS</h3>
+                    <p className="ticket-info-el__info">
+                      ЭЛЕКТРОННЫЙ БИЛЕТ<br />E-ticket #1745515021
+                    </p>
+                  </div>
+                  <div className="age-restriction">18+</div>
+                  <p className="electronic-ticket__title title-def_sec">{eventName}</p>
+                  <div className="qr-code" ref={qrCodeRef}></div>
+                  <p className="ticket-info-el__val">{date.split('-').reverse().join('.')}</p>
+                  <p className="ticket-info-el__val">{time}</p>
+                  <div className="ticket-image" style={{ backgroundImage: `url(${selectedEvent?.image})` }}></div>
+                  <div className="ticket-info">
+                    <div>
+                      <p><strong>ГОРОД</strong><br />{city}</p>
+                      <p><strong>РЯД, МЕСТО</strong><br />{row} ряд {seat} место</p>
+                    </div>
+                    <div>
+                      <p><strong>ФИО</strong><br />{fullName}</p>
+                      <p><strong>НОМЕР ЗАКАЗА #</strong><br />1745515021</p>
+                      <p><strong>СТОИМОСТЬ</strong><br />{price} Р</p>
+                    </div>
+                  </div>
+                  <div className="barcode"></div>
+                  <div className="ticket-rules">
+                    <h4>ПРАВИЛА ИСПОЛЬЗОВАНИЯ И ВОЗВРАТА БИЛЕТА</h4>
+                    <p>
+                      1. Настоящий электронный билет является равным по консульству мероприятий.<br />
+                      2. Указанный идентификатор (штрих-код), содержащий в себе информацию о владельце мероприятия.<br />
+                      3. В случае возникновения каких-либо проблем, таких как качество изображения, физическое повреждение.<br />
+                      4. Пиротехника запрещена на мероприятии в случае отсутствия технических специалистов.<br />
+                      5. Стоимость настоящего электронного билета может быть возвращена по первому требованию.<br />
+                      6. С условием обмена вы можете ознакомиться на нашем сайте.
+                    </p>
                   </div>
                 </div>
-                <div className="w-full h-10 my-1 barcode"></div>
-                <div className="border border-black p-2 text-[10px] text-black">
-                  <h4 className="mb-1 text-xs font-bold">ПРАВИЛА ИСПОЛЬЗОВАНИЯ И ВОЗВРАТА БИЛЕТА</h4>
-                  <p>
-                    1. Настоящий электронный билет является равным по консульству мероприятий.<br />
-                    2. Указанный идентификатор (штрих-код), содержащий в себе информацию о владельце мероприятия.<br />
-                    3. В случае возникновения каких-либо проблем, таких как качество изображения, физическое повреждение.<br />
-                    4. Пиротехника запрещена на мероприятии в случае отсутствия технических специалистов.<br />
-                    5. Стоимость настоящего электронного билета может быть возвращена по первому требованию.<br />
-                    6. С условием обмена вы можете ознакомиться на нашем сайте.
-                  </p>
+
+                <div className="btn-container">
+                  <button
+                    className="btn-def btn-def_2"
+                    onClick={downloadPNG}
+                  >
+                    Скачать как PNG
+                  </button>
+                  <button
+                    className="btn-def btn-def_2"
+                    onClick={downloadPDF}
+                  >
+                    Скачать как PDF
+                  </button>
                 </div>
-              </div>
 
-              <div className="w-full max-w-[500px] mb-5 text-center">
-                <button
-                  onClick={downloadPNG}
-                  className="w-full p-2 bg-red-600 text-white rounded text-base hover:bg-red-700 mb-2"
-                >
-                  Скачать как PNG
-                </button>
-                <button
-                  onClick={downloadPDF}
-                  className="w-full p-2 bg-red-600 text-white rounded text-base hover:bg-red-700"
-                >
-                  Скачать как PDF
-                </button>
-              </div>
+                <div className="btn-container">
+                  <button
+                    className="btn-def"
+                    onClick={goBack}
+                  >
+                    Назад
+                  </button>
+                  <button
+                    className="btn-def btn-def_2"
+                    onClick={goToEventSite}
+                  >
+                    Перейти на сайт мероприятия
+                  </button>
+                </div>
 
-              <div className="w-full max-w-[500px] mb-5 text-center">
-                <button
-                  onClick={goBack}
-                  className="w-full p-2 bg-gray-700 text-white rounded text-base hover:bg-gray-800 mb-2"
-                >
-                  Назад
-                </button>
-                <button
-                  onClick={goToEventSite}
-                  className="w-full p-2 bg-red-600 text-white rounded text-base hover:bg-red-700"
-                >
-                  Перейти на сайт мероприятия
-                </button>
-              </div>
+                <div className="other-events">
+                  <h3 className="title-def_red title-def_sec">Другие мероприятия</h3>
+                  <a href="event-lebedinoe.html">
+                    <img src="lebedinoe_ozero.png" alt="Лебединое озеро" />
+                    <div>
+                      <h4>Лебединое озеро</h4>
+                      <p>30 Апреля 2025, 19:00</p>
+                    </div>
+                  </a>
+                  <a href="event-traviata.html">
+                    <img src="traviata.png" alt="Травиата" />
+                    <div>
+                      <h4>Травиата</h4>
+                      <p>5 Мая 2025, 18:30</p>
+                    </div>
+                  </a>
+                  <a href="event-zhenskiy.html">
+                    <img src="zhenskiy_stendap.png" alt="Женский стендап" />
+                    <div>
+                      <h4>Женский стендап</h4>
+                      <p>10 Мая 2025, 20:00</p>
+                    </div>
+                  </a>
+                </div>
+              </>
+            )}
 
-              <div className="bg-gray-800 bg-opacity-90 p-5 rounded-lg w-full max-w-[500px] mb-5 shadow-lg">
-                <h3 className="mb-2 text-2xl text-red-500">Другие мероприятия</h3>
-                <a href="event-lebedinoe.html" className="flex items-center bg-gray-700 p-2 rounded-lg mb-2 hover:scale-[1.02] transition-transform">
-                  <img src="lebedinoe_ozero.png" alt="Лебединое озеро" className="w-[100px] h-[60px] object-cover rounded mr-2" />
-                  <div>
-                    <h4 className="text-base text-white">Лебединое озеро</h4>
-                    <p className="text-xs text-gray-400">30 Апреля 2025, 19:00</p>
-                  </div>
-                </a>
-                <a href="event-traviata.html" className="flex items-center bg-gray-700 p-2 rounded-lg mb-2 hover:scale-[1.02] transition-transform">
-                  <img src="traviata.png" alt="Травиата" className="w-[100px] h-[60px] object-cover rounded mr-2" />
-                  <div>
-                    <h4 className="text-base text-white">Травиата</h4>
-                    <p className="text-xs text-gray-400">5 Мая 2025, 18:30</p>
-                  </div>
-                </a>
-                <a href="event-zhenskiy.html" className="flex items-center bg-gray-700 p-2 rounded-lg mb-2 hover:scale-[1.02] transition-transform">
-                  <img src="zhenskiy_stendap.png" alt="Женский стендап" className="w-[100px] h-[60px] object-cover rounded mr-2" />
-                  <div>
-                    <h4 className="text-base text-white">Женский стендап</h4>
-                    <p className="text-xs text-gray-400">10 Мая 2025, 20:00</p>
-                  </div>
-                </a>
+            <footer className="sec-footer">
+              <div className="sec-footer__wrap">
+                <p className="sec-footer__text">
+                  Все права защищены ООН КАРАБАС, лицензионное соглашение на 2025 год.{' '}
+                  <a href="license.html" target="_blank" className="link-arr">Подробнее о лицензии</a>
+                </p>
               </div>
-            </>
-          )}
-
-          <footer className="mt-auto p-2 bg-black bg-opacity-50 w-full text-center text-xs text-gray-400">
-            <p>
-              Все права защищены ООН КАРАБАС, лицензионное соглашение на 2025 год.{' '}
-              <a href="license.html" target="_blank" className="text-red-500 hover:underline">
-                Подробнее о лицензии
-              </a>
-            </p>
-          </footer>
+            </footer>
+          </div>
         </div>
       );
     };
